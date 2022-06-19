@@ -1,0 +1,17 @@
+{
+  "name": "lesson4",
+  "version": "1.0.0",
+  "description": "",
+  "source": "app/index.html",
+  "scripts": {
+    "start": "parcel app/index.html --open --port=4000",
+    "build": "parcel build app/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.1",
+    "parcel": "^2.6.1"
+  }
+}

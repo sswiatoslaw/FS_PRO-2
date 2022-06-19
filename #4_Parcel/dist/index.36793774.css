@@ -1,0 +1,106 @@
+.header {
+  height: 80px;
+  background-color: #999;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+
+.header h1 {
+  text-transform: uppercase;
+  color: bisque;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header button {
+  background-color: bisque;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.content {
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+  margin: 20px 0;
+  display: flex;
+}
+
+.content_item {
+  width: 200px;
+  height: 300px;
+  background-color: #7f7f7f;
+}
+
+.content__image {
+  height: 150px;
+  width: 100%;
+  background-color: #646464;
+}
+
+.content_item h1 {
+  margin: 10px 20px;
+  font-size: 20px;
+}
+
+.content_item p {
+  color: #333;
+  margin: 15px;
+  font-size: 12px;
+}
+
+.footer {
+  height: 40px;
+  color: #fff;
+  background-color: #646464;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.container {
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+}
+
+/*# sourceMappingURL=index.36793774.css.map */

@@ -1,0 +1,31 @@
+.about-us {
+  background: gray;
+  margin: 10px;
+}
+
+.contact {
+  flex-direction: row;
+  column-gap: 10px;
+  padding-top: 25px;
+  display: flex;
+}
+
+.header {
+  color: #000;
+  margin: 100px;
+  display: flex;
+}
+
+.header__logo {
+  background-color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+p {
+  color: brown;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=index.9118c52c.css.map */

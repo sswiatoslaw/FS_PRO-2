@@ -1,0 +1,19 @@
+.header {
+  color: #000;
+  margin: 100px;
+  display: flex;
+}
+
+.header__logo {
+  background-color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+p {
+  color: brown;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=index.b8508851.css.map */
