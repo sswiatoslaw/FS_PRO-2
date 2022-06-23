@@ -18,7 +18,7 @@ const deleteDist = () => del('dist');
 
 const convertStyles = () => {
     return src('app/css/**/*.scss')
-        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(sass())
         .pipe(concat('style.min.css'))
         .pipe(dest('app/css'))
         .pipe(browserSync.stream())

@@ -1,0 +1,31 @@
+$default-px: 10px;
+
+.content{
+    margin: $default-px*2 0;
+    display: flex;
+    gap: $default-px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 100%;
+
+    &__item{
+        width: $default-px*20;
+        height: $default-px*30;
+        background-color: #7f7f7f;
+    }
+    &__image{
+        height: 150px;
+        width: 100%;
+        background-color: #646464;
+    }
+    &__title{
+        font-size: $default-px*2;
+        margin: $default-px $default-px*2;
+    }
+    & p{
+        margin: 15px;
+        font-size: 12px;
+        color: #333333;
+
+    }
+}

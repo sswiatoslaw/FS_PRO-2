@@ -1,0 +1,114 @@
+.content {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.content__item {
+  width: 200px;
+  height: 300px;
+  background-color: #7f7f7f;
+}
+.content__image {
+  height: 150px;
+  width: 100%;
+  background-color: #646464;
+}
+.content__title {
+  font-size: 20px;
+  margin: 10px 20px;
+}
+.content p {
+  margin: 15px;
+  font-size: 12px;
+  color: #333333;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #646464;
+  color: #FFF;
+}
+.header {
+  height: 80px;
+  background-color: #414141;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header__logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: bisque;
+}
+.header__button {
+  font-size: 12px;
+  color: #414141;
+}
+
+.button {
+  border: 0;
+  border-radius: 20px;
+  background-color: bisque;
+  padding: 10px 20px;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}

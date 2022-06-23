@@ -1,0 +1,35 @@
+@import 'style.scss';
+
+.header{
+  @include flex-centered();
+  height: 110px;
+  &__logo{
+    font-family: $default-font;
+    font-weight: 600;
+    font-size: $default-fs*3;
+    color: $default-color;
+  }
+  &__action{
+    @include flex-centered();
+    gap: 55px;
+  }
+  &__link{
+
+  }
+  &__button{
+
+  }
+}
+
+.menu{
+  &__list{
+    @include flex-centered();
+    gap: $default-fs*6;
+  }
+  &__item{
+
+  }
+  &__link{
+
+  }
+}

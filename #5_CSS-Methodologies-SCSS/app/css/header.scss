@@ -1,0 +1,34 @@
+$default-color: #414141;
+$default-fs: 12px;
+
+@mixin centered-elements() {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header {
+    height: 80px;
+    background-color: $default-color;
+    @include centered-elements();
+
+    &__logo{
+        font-size: $default-fs*2;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: bisque;
+    }
+
+    &__button{
+        font-size: $default-fs;
+        color: $default-color;
+
+    }
+}
+
+.button{
+    border: 0;
+    border-radius: 20px;
+    background-color: bisque;
+    padding: 10px 20px;
+}

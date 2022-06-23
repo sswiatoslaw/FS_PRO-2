@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+.container {
+  padding: 0 144px;
+}
+
+.link {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1A1A1A;
+}
+
+.button {
+  transition: 1s;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border: none;
+  padding: 15.5px 20px;
+  background: #235241;
+  border-radius: 4px;
+  color: #FFF;
+}
+.button:hover {
+  transition: 1s;
+  background: #1b4336;
+}
+
+.hero {
+  height: 620px;
+  background: #E1FFF4;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+}
+.header__logo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #1A1A1A;
+}
+.header__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 55px;
+}
+.menu__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+.container {
+  padding: 0 144px;
+}
+
+.link {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1A1A1A;
+}
+
+.button {
+  transition: 1s;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border: none;
+  padding: 15.5px 20px;
+  background: #235241;
+  border-radius: 4px;
+  color: #FFF;
+}
+.button:hover {
+  transition: 1s;
+  background: #1b4336;
+}
+
+.hero {
+  height: 620px;
+  background: #E1FFF4;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+}
+.block__title {
+  font-weight: 600;
+  font-size: 56px;
+}
+.block__description {
+  padding: 20px 0;
+  font-weight: 400;
+  font-size: 16px;
+  color: #5A5A5A;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+.container {
+  padding: 0 144px;
+}
+
+.link {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1A1A1A;
+}
+
+.button {
+  transition: 1s;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border: none;
+  padding: 15.5px 20px;
+  background: #235241;
+  border-radius: 4px;
+  color: #FFF;
+}
+.button:hover {
+  transition: 1s;
+  background: #1b4336;
+}
+
+.hero {
+  height: 620px;
+  background: #E1FFF4;
+}
