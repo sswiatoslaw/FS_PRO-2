@@ -1,0 +1,28 @@
+@import "../constants";
+
+.container{
+  padding: 0 144px;
+}
+
+.hero{
+  @include flex-centered();
+  background-color: #E1FFF4;
+}
+
+.block{
+  @include flex-centered();
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: $default-font;
+
+  &__title{
+    font-weight: 600;
+    font-size: 56px;
+  }
+  &__description{
+    padding: 20px 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: #5A5A5A;
+  }
+}
