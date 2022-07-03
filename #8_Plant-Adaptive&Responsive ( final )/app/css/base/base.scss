@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import '../constants';
+
+button{
+  max-width: 100%;
+  transition: 1s;
+  font-family: $default-font;
+  font-weight: 400;
+  font-size: 14px;
+  border: none;
+  padding: 15.5px 20px;
+  background: #235241;
+  border-radius: 4px;
+  color: #FFF;
+  &:hover{
+    transition: 1s;
+    background: #1b4336;
+  }
+}
+
+a{
+  font-family: $default-font;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: $default-fs*2;
+  color: $default-color;
+}
+
+
+h3{
+  font-family: $default-font;
+  font-weight: 600;
+  font-size: $default-fs*6;
+  color: $default-color;
+  line-height: 55px;
+}
+
+h4{
+  font-family: $default-font;
+  font-weight: 600;
+  font-size: $default-fs*2;
+  color: #235241;
+}
+
+span {
+  font-family: $default-font;
+  font-weight: 400;
+  font-size: $default-fs*2;
+  color: #5A5A5A;
+  line-height: 160%;
+}
+
+p{
+  font-family: $default-font;
+  font-weight: 400;
+  font-size: $default-fs*2+2px;
+  color: $default-color;
+  line-height: 160%;
+}
+
+img{
+  max-width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}

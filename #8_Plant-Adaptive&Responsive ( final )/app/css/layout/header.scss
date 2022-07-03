@@ -1,0 +1,74 @@
+@import '../constants';
+
+.header{
+  @include flex-centered();
+  height: 110px;
+  &__logo{
+    font-family: $default-font;
+    font-weight: 600;
+    font-size: $default-fs*3;
+    color: $default-color;
+  }
+  &__action{
+    @include flex-centered();
+    gap: 55px;
+  }
+  &__link{
+
+  }
+  &__button{
+
+  }
+}
+
+.menu{
+  &__button{
+    &-close{
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+    &-open{
+      width: 25px;
+      display: none;
+    }
+  }
+  &__burger{
+    height: 100vh;
+    width: 100vw;
+    background-color: #E8FFEA;
+    position: fixed;
+    right: 0;
+    top: 0;
+    & .menu__list {
+      gap: 0;
+      padding-top: 40px;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    & .menu__item {
+      height: 100%;
+      width: 100%;
+      padding: 20px 0;
+      padding-left: 40px;
+      transition: 0.5s;
+    }
+    & .menu__link {
+      font-weight: bold;
+    }
+    & .menu__item:hover {
+      transition: 0.5s;
+      background-color: #3B5D3B;
+    }
+  }
+  &__list{
+    @include flex-centered();
+    gap: $default-fs*6;
+  }
+  &__item{
+
+  }
+  &__link{
+
+  }
+}
+

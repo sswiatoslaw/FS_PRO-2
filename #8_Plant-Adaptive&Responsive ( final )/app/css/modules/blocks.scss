@@ -1,0 +1,48 @@
+@import "../constants";
+
+.container{
+  padding-left: 144px;
+  padding-right: 144px;
+
+}
+
+.block{
+  @include flex-centered();
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: $default-font;
+
+  &__title{
+    font-weight: 600;
+    font-size: 56px;
+  }
+  &__description{
+    padding: 20px 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: #5A5A5A;
+  }
+}
+
+.hero{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  @include flex-centered();
+  flex-wrap: wrap-reverse;
+  gap: 20px;
+  background-color: #E1FFF4;
+}
+
+.partner {
+  padding: 56px 0;
+  justify-content: center;
+  align-items: center;
+  &__wrapper{
+    padding-top: 40px;
+    max-width: 1200px;
+    display: flex;
+    gap: 120px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

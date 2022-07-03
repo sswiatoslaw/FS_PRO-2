@@ -1,0 +1,30 @@
+.footer{
+  margin: 100px 0;
+  display: grid;
+  gap: 200px;
+  grid-template-columns: 350px repeat(3, 135px);
+  & .plant {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  & .icons__wrapper{
+    display: flex;
+    gap: 30px;
+  }
+
+  & .menu{
+    &__list{
+      gap: 16px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  & h3 {
+    font-size: 24px;
+  }
+  & a {
+    color: #5A5A5A;
+  }
+}

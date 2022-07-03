@@ -1,0 +1,34 @@
+@media (max-width: 1050px) {
+  .container{
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .sections{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section__block{
+    justify-content: center;
+  }
+
+  .menu {
+    display: none;
+    &__button{
+      &-open{
+        display: block;
+      }
+    }
+  }
+
+  .work {
+    & .shadow {
+      box-shadow: none;
+    }
+  }
+
+  .header__action{
+    gap: 25px;
+  }
+}
