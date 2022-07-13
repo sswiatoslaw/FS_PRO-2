@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #4E4E4E;
+}
+
+h2::before {
+  content: "- ";
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 30px;
+  color: #4E4E4E;
+}
+
+p {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 20px;
+  color: #7C7C7C;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.header {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+.header__menu-mobile {
+  width: 180px;
+  top: 65px;
+  position: absolute;
+  background: #F5F5F5;
+}
+.header__menu-item {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 400;
+  color: #4E4E4E;
+}
+.header__menu-item:hover {
+  background: #E5E5E5;
+}
+.header__menu-item.current {
+  color: #57A4A4;
+}
+.header__menu-button {
+  transition: 1s;
+  background: black;
+}
+.header__menu-button:hover {
+  transition: 1s;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 40px 0;
+  background-color: black;
+}
+.footer__title {
+  color: white;
+}
+.footer__title::after {
+  content: " -";
+}
+.footer__description {
+  color: #B9B9B9;
+}
+.footer__address {
+  color: #B9B9B9;
+  font-size: 14px;
+  line-height: 24px;
+}
+.footer__address span::before {
+  padding: 0 5px;
+  content: " / ";
+}
+.container {
+  padding: 25px;
+}
+
+.intro-image {
+  width: 100%;
+}
+
+.posts__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 25px 0;
+}
+.posts__list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.posts__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.posts__item {
+  max-width: 555px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.posts__item-description {
+  font-size: 14px;
+  color: #5C5C5C;
+}
+.posts__item img {
+  width: 160px;
+  height: 140px;
+}
+
+.instagram-posts__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.instagram-posts__list {
+  display: flex;
+  flex-direction: column;
+}
+.instagram-posts__text {
+  display: flex;
+}
+.instagram-posts__link {
+  display: none;
+}
+.instagram-posts__item {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .header {
+    justify-content: center;
+  }
+  .header__menu {
+    display: flex;
+    gap: 15px;
+  }
+  .header__menu-button {
+    display: none;
+  }
+  .posts__list {
+    gap: 35px;
+  }
+  .posts__item {
+    display: flex;
+    flex-direction: row;
+  }
+  .instagram-posts__list {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .instagram-posts__text {
+    justify-content: space-between;
+  }
+  .instagram-posts__link {
+    display: block;
+  }
+}

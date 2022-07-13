@@ -1,0 +1,35 @@
+@media (min-width: 768px) {
+  .header{
+    justify-content: center;
+    &__menu{
+      display: flex;
+      gap: 15px;
+      &-button{
+        display: none;
+      }
+    }
+  }
+
+  .posts{
+    &__list{
+      gap: 35px;
+    }
+    &__item{
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .instagram-posts {
+    &__list{
+      flex-direction: row;
+      gap: 10px;
+    }
+    &__text{
+      justify-content: space-between;
+    }
+    &__link{
+      display: block;
+    }
+  }
+}

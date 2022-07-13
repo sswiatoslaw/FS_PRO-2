@@ -1,0 +1,61 @@
+@import "../constants";
+
+.posts{
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $indent-primary;
+    margin: $indent-primary 0;
+  }
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: $indent-primary;
+  }
+  &__text{
+    &-wrapper{
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+  }
+  &__item{
+    max-width: 555px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &-description{
+      font-size: 14px;
+      color: $additional-color;
+    }
+    & img{
+      width: 160px;
+      height: 140px;
+    }
+  }
+}
+
+.instagram-posts {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $indent-primary;
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text{
+    display: flex;
+  }
+
+  &__link{
+    display: none;
+  }
+
+  &__item {
+    width: 100%;
+  }
+}
