@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import '../constants';
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h2{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: $primary-color;
+}
+
+h2::before {
+  content: "- "
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 30px;
+  color: $primary-color;
+}
+
+p {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 20px;
+  color: $secondary-color;
+}
+
+.hidden {
+  display: none !important;
+}

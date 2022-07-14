@@ -1,0 +1,36 @@
+@import "../constants";
+
+.header{
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: flex-end;
+  &__menu{
+    &-mobile {
+      width: 180px;
+      top: 65px;
+      position: absolute;
+      background: #F5F5F5;
+    }
+    &-item{
+      padding: 10px 15px;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 400;
+      color: $primary-color;
+      &:hover{
+        background: #E5E5E5;
+      }
+      &.current {
+        color: #57A4A4;
+      }
+    }
+    &-button{
+      transition: 1s;
+      background: black;
+    }
+    &-button:hover{
+      transition: 1s;
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+}

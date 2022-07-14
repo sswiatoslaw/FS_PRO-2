@@ -1,0 +1,11 @@
+@import "../constants";
+
+.container {
+  padding: $indent-primary;
+}
+
+.intro {
+  &-image{
+    width: 100%;
+  }
+}
