@@ -15,6 +15,9 @@
       gap: 35px;
     }
     &__item{
+      &-description{
+        display: block;
+      }
       display: flex;
       flex-direction: row;
     }
@@ -30,6 +33,15 @@
     }
     &__link{
       display: block;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .posts{
+    &__list{
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 }

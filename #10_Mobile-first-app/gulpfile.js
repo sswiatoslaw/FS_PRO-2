@@ -3,6 +3,7 @@ const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
 const browserSync = require('browser-sync').create();
+const fileinclude = require('gulp-file-include');
 const del = require('del');
 
 const build = () => {
@@ -15,6 +16,13 @@ const build = () => {
 }
 
 const deleteDist = () => del('dist');
+
+const convertPages = () => {
+    return src('app/pages/**/*.html')
+        .pipe(fileinclude())
+        .pipe(dest('app/'))
+        .pipe(browserSync.stream())
+}
 
 const convertStyles = () => {
     return src('app/css/**/index.scss')
@@ -39,6 +47,7 @@ const server = () => {
         }
     })
     watch('app/css/**/*.scss', convertStyles)
+    watch(['app/pages/**/*.html', 'app/layout/**/*.html'], convertPages)
     watch(['app/js/**/*.js', '!app/js/script.min.js'], convertScripts)
     watch(['app/*.html']).on('change', browserSync.reload);
 }
@@ -47,6 +56,6 @@ exports.convertStyles = convertStyles;
 exports.convertScripts = convertScripts;
 exports.server = server;
 
-exports.default = server;
+exports.default = series(convertPages, server);
 
-exports.build = series(deleteDist, convertStyles, convertScripts, build);
+exports.build = series(deleteDist, convertPages, convertStyles, convertScripts, build);
