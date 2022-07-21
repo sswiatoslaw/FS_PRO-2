@@ -1,0 +1,29 @@
+.root {
+  & header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    background-color: #313131;
+    & .header__menu {
+      display: flex;
+      gap: 20px;
+      & a{
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: 0.5s;
+        &:hover {
+          color: #589DEC;
+          transition: 0.5s;
+        }
+      }
+    }
+    & h1 {
+      color: white;
+      font-size: 26px;
+      font-weight: 700; // bold
+    }
+  }
+}
