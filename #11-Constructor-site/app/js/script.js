@@ -66,9 +66,11 @@ const renderSite = (siteObject) => {
         }))
 }
 
-const newTag = (index) => {
+const newTag = (index, tagName) => {
     const tagWrapper = document.createElement('div')
     tagWrapper.className = 'tag__wrapper';
+    const tagH6 = document.createElement('h6');
+    tagH6.textContent = 'tag ' + index;
     const tagSelect = document.createElement('select');
     tagSelect.className = 'tag-list'
     tagSelect.id = 'tag-tag-' + index
@@ -86,39 +88,46 @@ const newTag = (index) => {
         tagOption.textContent = option;
         tagSelectValue.append(tagOption);
     })
+
+    const valueWrapperTag = document.createElement('div');
+    valueWrapperTag.className = `value-wrapper-${index + 1}`;
+
     const tagInputValue = document.createElement('input');
     tagInputValue.id = 'tag-value-' + index;
+    valueWrapperTag.append(tagInputValue);
 
+    createEventListenerChanges(tagSelectValue, index, 'tag');
+    tagWrapper.append(tagH6);
     tagWrapper.append(tagSelect);
     tagWrapper.append(tagInputClassName);
     tagWrapper.append(tagInputId);
     tagWrapper.append(tagSelectValue);
-    tagWrapper.append(tagInputValue);
+    tagWrapper.append(valueWrapperTag);
     return tagWrapper
 }
 
-const newValue = (param, index) => {
-    const valueWrapper = document.querySelector('.header-value-wrapper');
+const newValue = (param, index, tagName) => {
+    console.log(param, index, tagName);
+    const valueWrapper = document.querySelector(`.value-wrapper-${index}`);
     valueWrapper.innerHTML = '';
     if(param === 'text') {
         const valueInput = document.createElement('input');
-        valueInput.id = 'header-value-0'
-        valueInput.placeholder = 'Enter value for header'
+        valueInput.id = `${tagName}-value-0`
+        valueInput.placeholder = `Enter value for ${tagName}`
         valueWrapper.append(valueInput);
     } else if (param === 'tag') {
-        valueWrapper.append(newTag(index));
+        valueWrapper.append(newTag(index, tagName));
     }
 }
 
 const valueSelect = document.querySelector('#header-value-select-0');
 
-
-
-valueSelect.addEventListener('change', (event) => {
-    currentIndex++;
-    console.log(currentIndex);
-    newValue(event.target.value, currentIndex);
-})
+const createEventListenerChanges = (element, index, tagName) => {
+    element.addEventListener('change', (event) => {
+        newValue(event.target.value, currentIndex, tagName);
+        currentIndex++;
+    })
+}
 
 
 const createHeaderButton = document.querySelector('#create-header-button');
@@ -149,7 +158,7 @@ const checkLocalStorage = () => {
 
 const startConstructor = () => {
     checkLocalStorage();
-    newValue(valueSelect.value);
+    createEventListenerChanges(valueSelect, 0, 'header');
 }
 window.onload = startConstructor()  ;
 
