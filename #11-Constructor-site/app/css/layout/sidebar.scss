@@ -1,6 +1,8 @@
 .sidebar {
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+
   &__item{
     border-bottom: 2px solid white;
     display: flex;
@@ -9,6 +11,7 @@
     justify-content: center;
     padding: 25px 10px;
     &-wrapper{
+      margin: 10px 0;
       display: flex;
       align-items: center;
       gap: 25px;
@@ -24,8 +27,33 @@
   }
 }
 
-.tag__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.constructor{
+  &__item{
+      margin: 20px 0;
+      padding: 10px 20px;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
+    &-wrapper{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &-title{
+      align-self: center;
+      font-size: 16px;
+      font-weight: bold; // 700
+      text-transform: uppercase;
+    }
+    &-valueWrapper{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }

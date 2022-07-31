@@ -35,29 +35,6 @@ const renderTag = (object) => {
 
 const renderTagObject = (objectValue) => renderTag(objectValue);
 
-const createTag = (tagName, tagIndex) => {
-    const tagNameArray = ['tag', 'className', 'id', 'value', 'value-select'];
-    let tagObject = {};
-    tagNameArray.forEach((tag) => {
-        const currentValue = document.querySelector('#' + tagName + '-' + tag + '-' + tagIndex);
-        if(currentValue) {
-            if(tag === 'value-select' && currentValue.value === 'tag') {
-                tagObject = {...tagObject, value: createTagObject('tag', currentIndex) }
-            } else {
-                console.log(currentValue);
-                tagObject = {...tagObject, [tag]: currentValue.value }
-            }
-        }
-    })
-    return tagObject
-}
-
-const createTagObject = (tagName, tagIndex) => createTag(tagName, tagIndex);
-
-const createHeader = (object) => {
-    return { header: object }
-}
-
 const renderSite = (siteObject) => {
     console.log(siteObject);
     root.innerHTML = '';
@@ -66,86 +43,137 @@ const renderSite = (siteObject) => {
         }))
 }
 
-const newTag = (index, tagName) => {
-    const tagWrapper = document.createElement('div')
-    tagWrapper.className = 'tag__wrapper';
-    const tagH6 = document.createElement('h6');
-    tagH6.textContent = 'tag ' + index;
-    const tagSelect = document.createElement('select');
-    tagSelect.className = 'tag-list'
-    tagSelect.id = 'tag-tag-' + index
-    const tagInputClassName = document.createElement('input');
-    tagInputClassName.id = 'tag-className-' + index;
-    tagInputClassName.placeholder = 'element className';
-    const tagInputId = document.createElement('input');
-    tagInputId.id = 'tag-id-' + index;
-    tagInputId.placeholder = 'element id';
-    const tagSelectValue = document.createElement('select');
-    tagSelectValue.id = 'tag-value-select-' + index;
-    ['Text', 'Tag'].forEach((option) => {
-        const tagOption = document.createElement('option');
-        tagOption.value = option.toLowerCase();
-        tagOption.textContent = option;
-        tagSelectValue.append(tagOption);
-    })
+const createElement = (tag, className, id) => {
+    const element = document.createElement(tag);
+    element.className = className;
+    element.id = id;
 
-    const valueWrapperTag = document.createElement('div');
-    valueWrapperTag.className = `value-wrapper-${index + 1}`;
-
-    const tagInputValue = document.createElement('input');
-    tagInputValue.id = 'tag-value-' + index;
-    valueWrapperTag.append(tagInputValue);
-
-    createEventListenerChanges(tagSelectValue, index, 'tag');
-    tagWrapper.append(tagH6);
-    tagWrapper.append(tagSelect);
-    tagWrapper.append(tagInputClassName);
-    tagWrapper.append(tagInputId);
-    tagWrapper.append(tagSelectValue);
-    tagWrapper.append(valueWrapperTag);
-    return tagWrapper
+    return element;
 }
 
-const newValue = (param, index, tagName) => {
-    console.log(param, index, tagName);
-    const valueWrapper = document.querySelector(`.value-wrapper-${index}`);
-    valueWrapper.innerHTML = '';
-    if(param === 'text') {
-        const valueInput = document.createElement('input');
-        valueInput.id = `${tagName}-value-0`
-        valueInput.placeholder = `Enter value for ${tagName}`
-        valueWrapper.append(valueInput);
-    } else if (param === 'tag') {
-        valueWrapper.append(newTag(index, tagName));
-    }
+const firstOption = () => {
+    const option = document.createElement('option');
+    option.value = '';
+    option.textContent = 'Select option';
+    option.disabled = true;
+    option.selected = true;
+
+    return option;
 }
 
-const valueSelect = document.querySelector('#header-value-select-0');
-
-const createEventListenerChanges = (element, index, tagName) => {
-    element.addEventListener('change', (event) => {
-        newValue(event.target.value, currentIndex, tagName);
-        currentIndex++;
+const addOptions = (array, parentElement) => {
+    parentElement.append(firstOption());
+    array.forEach((tag) => {
+        const createdOptionTag = document.createElement('option');
+        createdOptionTag.value = tag.toLowerCase();
+        createdOptionTag.textContent = tag;
+        parentElement.append(createdOptionTag);
     })
 }
 
+const createConstructorElement = (elementName) => {
+    const wrapper = createElement('div', 'constructor__item', `${elementName}-wrapper`);
 
-const createHeaderButton = document.querySelector('#create-header-button');
+    const title = createElement('h6', 'constructor__item-title', `${elementName}-title`);
+    title.textContent = elementName;
 
-createHeaderButton.addEventListener('click', (element) => {
-    const siteObject = createHeader(createTag('header', 0));
-    localStorage.setItem('renderSite', JSON.stringify(siteObject));
-    renderSite(siteObject);
+    const tag = createElement('select', 'constructor__item-tag', `${elementName}-tag`);
+    addOptions(tagList, tag);
+
+    const className = createElement('input', 'constructor__item-className', `${elementName}-className`);
+    className.placeholder = 'Element className';
+
+    const id = createElement('input', 'constructor__item-id', `${elementName}-id`);
+    id.placeholder = 'Element id';
+
+    const selectValue = createElement('select', 'constructor__item-selectValue', `${elementName}-selectValue`);
+    addOptions(['Text', 'Tag'], selectValue);
+
+    const valueWrapper = createElement('div', 'constructor__item-valueWrapper', `${elementName}-valueWrapper`);
+
+    selectValue.addEventListener('change', (event) => {
+        switch(event.target.value) {
+            case 'text':
+                valueWrapper.innerHTML = '';
+                const value = createElement('input', 'constructor__item-value', `${elementName}-value`);
+                value.placeholder = 'Enter text';
+                valueWrapper.append(value);
+                break;
+            case 'tag':
+                valueWrapper.innerHTML = '';
+                valueWrapper.append(createConstructorElement('header-child'));
+                break;
+        }
+    })
+
+    const renderButton = createElement('button', 'constructor__item-render', `${elementName}-render`);
+    renderButton.textContent = `Render this ${elementName}`;
+    renderButton.addEventListener('click', () => {
+        console.log(createTag(elementName));
+    })
+
+    wrapper.append(title, tag, className, id, selectValue, valueWrapper, renderButton)
+    return wrapper
+}
+
+const newBlockButton = document.querySelector('#new-block-button');
+
+newBlockButton.addEventListener('click', () => {
+        const sidebarItem = document.querySelector('.sidebar__item');
+        const newBlockName = document.querySelector('#new-block-name');
+        if(newBlockName.value !== '') {
+            sidebarItem.append(createSettingsElement(newBlockName.value));
+        } else {
+            alert('Please enter block name');
+        }
+        newBlockName.value = '';
 });
 
-const headerActive = document.querySelector('#header-active');
-headerActive.addEventListener('click', (element) => {
-    if(element.target.checked){
-        toggleHideElement('.sidebar__item-content');
-    } else {
-        toggleHideElement('.sidebar__item-content');
-    }
-})
+const createSettingsElement = (elementName) => {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('sidebar__item-wrapper');
+
+    const title = document.createElement('h2');
+    title.classList.add('sidebar__item-title');
+    title.textContent = elementName;
+
+    const enableSettings = createElement('input', 'sidebar__item-checkbox', `enable-settings-${elementName}`);
+    enableSettings.type = 'checkbox';
+
+    enableSettings.addEventListener('click', (event) => {
+        const settingsWrapper = document.querySelector(`#${elementName}-wrapper`);
+        const constructor = document.querySelector('.constructor__item-wrapper');
+
+        if(settingsWrapper) {
+            settingsWrapper.classList.toggle('hidden');
+        } else {
+            if (event.target.checked) {
+                constructor.append(createConstructorElement(elementName));
+            }
+        }
+    })
+
+    wrapper.append(title);
+    wrapper.append(enableSettings);
+
+    return wrapper;
+}
+
+const createTag = (tagName) => {
+    const tagNameArray = ['tag', 'className', 'id', 'value', 'selectValue'];
+    let tagObject = {};
+    tagNameArray.forEach((tag) => {
+        const currentValue = document.querySelector('#' + tagName + '-' + tag);
+        if(currentValue) {
+            if(tag === 'selectValue' && currentValue.value === 'tag') {
+                tagObject = {...tagObject, value: createTag('header-child') }
+            } else {
+                tagObject = {...tagObject, [tag]: currentValue.value }
+            }
+        }
+    })
+    return tagObject
+}
 
 const checkLocalStorage = () => {
     const localStorageObject = localStorage.getItem('renderSite');
@@ -158,8 +186,8 @@ const checkLocalStorage = () => {
 
 const startConstructor = () => {
     checkLocalStorage();
-    createEventListenerChanges(valueSelect, 0, 'header');
 }
-window.onload = startConstructor()  ;
+
+window.onload = startConstructor();
 
 
