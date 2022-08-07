@@ -1,6 +1,8 @@
 const root = document.querySelector('.root');
-const tagList = ['div', 'header', 'section', 'footer', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'ul', 'li'];
+const tagList = ['div', 'header', 'section', 'footer', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a', 'span', 'ul', 'li'];
 let currentIndex = 0;
+let siteObject = {};
+let childObject = {};
 
 window.addEventListener('change', () => {
     const selectList = document.querySelectorAll('select.tag-list');
@@ -15,18 +17,14 @@ window.addEventListener('change', () => {
     })
 })
 
-const toggleHideElement = (selector) => {
-    const currentSelector = document.querySelector(selector);
-    currentSelector.classList.toggle('hidden');
-}
-
-
 const renderTag = (object) => {
     const currentRenderedTag = document.createElement(object.tag);
     currentRenderedTag.className = object.className;
     currentRenderedTag.id = object.id;
     if(typeof object.value === 'object') {
-        currentRenderedTag.append(renderTagObject(object.value));
+        object.value.forEach((element) => {
+            currentRenderedTag.append(renderTagObject(element));
+        })
     } else {
         currentRenderedTag.innerHTML = object.value;
     }
@@ -36,17 +34,21 @@ const renderTag = (object) => {
 const renderTagObject = (objectValue) => renderTag(objectValue);
 
 const renderSite = (siteObject) => {
-    console.log(siteObject);
+    localStorage.setItem('siteObject', JSON.stringify(siteObject));
     root.innerHTML = '';
         Object.keys(siteObject).forEach((key => {
             root.append(renderTag(siteObject[key]));
         }))
 }
 
-const createElement = (tag, className, id) => {
+function Element(tag, className, id) {
+    this.tag = tag;
+    this.className = className;
+    this.id = id;
+
     const element = document.createElement(tag);
-    element.className = className;
-    element.id = id;
+    element.className = this.className;
+    element.id = this.id;
 
     return element;
 }
@@ -71,48 +73,63 @@ const addOptions = (array, parentElement) => {
     })
 }
 
-const createConstructorElement = (elementName) => {
-    const wrapper = createElement('div', 'constructor__item', `${elementName}-wrapper`);
+const createConstructorElement = (elementName, child) => {
+    const wrapper = new Element('div', 'constructor__item', `${elementName}-wrapper`);
 
-    const title = createElement('h6', 'constructor__item-title', `${elementName}-title`);
+    const title = new Element('h6', 'constructor__item-title', `${elementName}-title`);
     title.textContent = elementName;
 
-    const tag = createElement('select', 'constructor__item-tag', `${elementName}-tag`);
+    const tag = new Element('select', 'constructor__item-tag', `${elementName}-tag`);
     addOptions(tagList, tag);
 
-    const className = createElement('input', 'constructor__item-className', `${elementName}-className`);
+    const className = new Element('input', 'constructor__item-className', `${elementName}-className`);
     className.placeholder = 'Element className';
 
-    const id = createElement('input', 'constructor__item-id', `${elementName}-id`);
+    const id = new Element('input', 'constructor__item-id', `${elementName}-id`);
     id.placeholder = 'Element id';
 
-    const selectValue = createElement('select', 'constructor__item-selectValue', `${elementName}-selectValue`);
+    const selectValue = new Element('select', 'constructor__item-selectValue', `${elementName}-selectValue`);
     addOptions(['Text', 'Tag'], selectValue);
 
-    const valueWrapper = createElement('div', 'constructor__item-valueWrapper', `${elementName}-valueWrapper`);
+    const valueWrapper = new Element('div', 'constructor__item-valueWrapper', `${elementName}-valueWrapper`);
+
+    const createChildButton = new Element('button', 'constructor__item-createChildButton', `${elementName}-createChildButton`);
+    createChildButton.textContent = 'Create child element';
+    createChildButton.addEventListener('click', () => {
+        if(childObject[elementName] >= 0) {
+            childObject[elementName] = childObject[elementName] + 1;
+        } else {
+            childObject = {...childObject, [elementName]: 0};
+        }
+        valueWrapper.append(createConstructorElement(`${elementName}-child-${childObject[elementName]}`, true));
+    });
 
     selectValue.addEventListener('change', (event) => {
         switch(event.target.value) {
             case 'text':
                 valueWrapper.innerHTML = '';
-                const value = createElement('input', 'constructor__item-value', `${elementName}-value`);
+                const value = new Element('input', 'constructor__item-value', `${elementName}-value`);
                 value.placeholder = 'Enter text';
                 valueWrapper.append(value);
                 break;
             case 'tag':
                 valueWrapper.innerHTML = '';
-                valueWrapper.append(createConstructorElement('header-child'));
+                valueWrapper.append(createChildButton);
                 break;
         }
     })
 
-    const renderButton = createElement('button', 'constructor__item-render', `${elementName}-render`);
+    const renderButton = new Element('button', 'constructor__item-render', `${elementName}-render`);
     renderButton.textContent = `Render this ${elementName}`;
     renderButton.addEventListener('click', () => {
-        console.log(createTag(elementName));
+        siteObject = {...siteObject, [elementName]: createTag(elementName)};
+        renderSite(siteObject);
     })
 
-    wrapper.append(title, tag, className, id, selectValue, valueWrapper, renderButton)
+    wrapper.append(title, tag, className, id, selectValue, valueWrapper);
+    if(!child) {
+        wrapper.append(renderButton);
+    }
     return wrapper
 }
 
@@ -137,7 +154,7 @@ const createSettingsElement = (elementName) => {
     title.classList.add('sidebar__item-title');
     title.textContent = elementName;
 
-    const enableSettings = createElement('input', 'sidebar__item-checkbox', `enable-settings-${elementName}`);
+    const enableSettings = new Element('input', 'sidebar__item-checkbox', `enable-settings-${elementName}`);
     enableSettings.type = 'checkbox';
 
     enableSettings.addEventListener('click', (event) => {
@@ -159,26 +176,40 @@ const createSettingsElement = (elementName) => {
     return wrapper;
 }
 
+function CreateObjectTag(tag, className, id, value) {
+    this.tag = tag;
+    this.className = className;
+    this.id = id;
+    this.value = value;
+}
+
+const findTagValue = (tagName, name) => {
+    return document.querySelector('#' + tagName + '-' + name) ? document.querySelector('#' + tagName + '-' + name).value : null;
+}
+
 const createTag = (tagName) => {
-    const tagNameArray = ['tag', 'className', 'id', 'value', 'selectValue'];
-    let tagObject = {};
-    tagNameArray.forEach((tag) => {
-        const currentValue = document.querySelector('#' + tagName + '-' + tag);
-        if(currentValue) {
-            if(tag === 'selectValue' && currentValue.value === 'tag') {
-                tagObject = {...tagObject, value: createTag('header-child') }
-            } else {
-                tagObject = {...tagObject, [tag]: currentValue.value }
-            }
+    const newTag = new CreateObjectTag(
+        findTagValue(tagName, 'tag'),
+        findTagValue(tagName, 'className'),
+        findTagValue(tagName, 'id'),
+        findTagValue(tagName, 'value'));
+    if(findTagValue(tagName, 'selectValue') === 'tag') {
+        const currentArrayValue = [];
+        for(let i = 0; i <= childObject[tagName]; i++ ){
+            currentArrayValue.push(createTag(`${tagName}-child-${i}`));
+            newTag.value = currentArrayValue;
         }
-    })
-    return tagObject
+    } else if(findTagValue(tagName, 'selectValue') === 'text') {
+        newTag.value = findTagValue(tagName, 'value');
+    }
+    return newTag;
 }
 
 const checkLocalStorage = () => {
-    const localStorageObject = localStorage.getItem('renderSite');
+    const localStorageObject = localStorage.getItem('siteObject');
     if(localStorageObject) {
         renderSite(JSON.parse(localStorageObject));
+        console.log(JSON.parse(localStorageObject));
     } else {
         alert('Welcome to constructor!');
     }

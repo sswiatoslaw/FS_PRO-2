@@ -140,7 +140,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
 }
-.container {
+.container-custom {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
