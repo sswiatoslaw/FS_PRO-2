@@ -1,0 +1,63 @@
+.header{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__social{
+    height: 28px;
+    &-wrapper{
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+  }
+  &__action{
+    &-wrapper{
+      display: flex;
+      gap: 40px;
+    }
+  }
+  &__menu{
+    &-bold{
+      a{
+        font-weight: 700;
+        font-size: 24px;
+      }
+    }
+    &-top{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-link{
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 31px;
+      text-decoration: none;
+      transition: 0.5s;
+
+      color: #000;
+      &:hover{
+        text-decoration: underline;
+        transition: 0.5s;
+      }
+    }
+
+    &-wrapper{
+      padding: 75px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 200px;
+      min-height: 400px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      background: #FFF;
+    }
+  }
+}
+
+
