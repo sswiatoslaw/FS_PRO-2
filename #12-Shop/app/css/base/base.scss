@@ -58,6 +58,19 @@ input{
   border: none;
 }
 
+button{
+  padding: 8px 40px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  text-transform: uppercase;
+
+  border: none;
+  background-color: black;
+  color: white;
+}
+
 //input::before{
 //  width: 15px;
 //  height: 15px;

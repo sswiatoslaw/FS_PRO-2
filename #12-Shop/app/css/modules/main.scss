@@ -1,5 +1,116 @@
-.header-wrapper{
-  background-image: url('../../images/background-main.png');
-  background-size: cover;
-  height: 1000px;
+.header{
+  &-wrapper{
+    background-image: url('../../images/background-main.png');
+    background-size: cover;
+    height: 1000px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    margin-bottom: 15%;
+  }
+}
+
+.categories{
+  &__card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+
+    position: relative;
+    &-wrapper{
+      display: flex;
+      gap: 115px;
+      margin: 70px 0;
+    }
+    &-background{
+      max-width: 337px;
+    }
+    &-image{
+      left: 5px;
+      position: absolute;
+    }
+    &-title{
+      font-weight: 700;
+    }
+  }
+  &-wrapper{
+  }
+  &-title{
+    position: relative;
+    & span {
+      margin: 0 15px;
+      padding: 0 15px;
+      border: 5px solid black;
+    }
+    &::after{
+      bottom: 50%;
+      position: absolute;
+      margin-left: 30px;
+      content: '';
+      height: 1px;
+      width: 170px;
+      background-color: black;
+    }
+  }
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.news{
+  &__card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 340px;
+    background: #F2F2F2;
+    &-body{
+      max-width: 90%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      & h3{
+        font-weight: 700;
+      }
+      & p{
+        color: black;
+      }
+    }
+    &-button{
+      width: 100%;
+      transition: 0.5s background;
+      &:hover{
+        background: none;
+        border: 5px solid black;
+        transition: 0.5s background;
+        color: black;
+      }
+    }
+  }
 }
