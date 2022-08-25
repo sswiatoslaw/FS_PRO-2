@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+    "image": "../images/news/image-1.png"
+  },
+  {
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+    "image": "../images/news/image-2.png"
+  },
+  {
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+    "image": "../images/news/image-3.png"
+  },
+  {
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+    "image": "../images/news/image-2.png"
+  },
+  {
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+    "image": "../images/news/image-1.png"
+  },
+  {
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+    "image": "../images/news/image-3.png"
+  }
+]

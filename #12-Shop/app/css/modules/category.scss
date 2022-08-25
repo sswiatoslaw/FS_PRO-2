@@ -1,0 +1,131 @@
+.header{
+  &-wrapper{
+    &.category{
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('../../images/background-category.png');
+    }
+  }
+  &__content{
+    &.category{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      gap: 200px;
+    }
+    &.category &-description{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      line-height: 40px;
+      font-size: 18px;
+    }
+    &-text{
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 732px;
+    }
+    &-image{
+      position: relative;
+    }
+    &-background{
+      max-width: 381px;
+    }
+    &-element{
+      top: 50px;
+      left: 15px;
+      position: absolute;
+    }
+  }
+}
+
+.category{
+
+  &__color{
+    &-title{
+      font-size: 18px;
+    }
+    &-item{
+      padding: 0px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      &.black{
+        background: black;
+      }
+      &.blue{
+        background: #5A88FF;
+      }
+      &.red{
+        background: #FF5A5A;
+      }
+      &.white{
+        background: white;
+      }
+      &.orange{
+        background: #FAC154;
+      }
+    }
+  }
+
+  &__product{
+    &-item{
+      display: grid;
+      grid-template-columns: 25% 4fr;
+      align-items: center;
+    }
+    &-about{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 70px;
+      max-width: 350px;
+      background-color: #F2F2F2;
+    }
+    &-title{
+      max-width: 200px;
+    }
+    &-price{
+      font-weight: 400;
+      color: #000000;
+    }
+    &-description{
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      line-height: 23px;
+
+      color: #000000;
+    }
+    &-button{
+      background: none;
+      border: 3px solid black;
+      color: black;
+    }
+    &-images{
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.product-swiper{
+  max-width: 1000px;
+  max-height: 600px;
+  &-pagination{
+    &-bullet{
+      border-radius: 0 !important;
+      height: 5px !important;
+      width: 25px !important;
+      background: #575757 !important;
+      &-active{
+        background: black !important;
+      }
+    }
+  }
+  &-slide{
+    & img{
+      width: 700px;
+    }
+  }
+}

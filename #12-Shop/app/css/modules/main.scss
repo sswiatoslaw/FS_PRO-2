@@ -83,6 +83,14 @@
 }
 
 .news{
+  &-wrapper{
+    text-align: center;
+  }
+
+  &-title{
+    margin: 65px 0;
+    color: black;
+  }
   &__card{
     display: flex;
     flex-direction: column;
@@ -112,5 +120,29 @@
         color: black;
       }
     }
+  }
+}
+
+
+.newsletter{
+  &__form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    & input{
+      border: 3px solid black;
+      border-radius: 0;
+    }
+  }
+  &-wrapper{
+    margin: 230px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  &-title{
+    font-size: 36px;
+    color: #000000;
   }
 }

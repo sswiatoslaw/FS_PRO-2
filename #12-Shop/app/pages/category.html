@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <title>Category</title>
+</head>
+<body>
+    <div class="header-wrapper category">
+        @@include('../layout/header.html')
+        <div class="header__content category">
+            <div class="header__content-image">
+                <img class="header__content-background" src="../images/category/content-1.png" alt="">
+                <img class="header__content-element" src="../images/category/bike-1.png" alt="">
+            </div>
+            <div class="header__content-text">
+                <h1 class="header__content-title">
+                    OFFROAD SERIES
+                </h1>
+                <p class="header__content-description">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                    <span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @@loop("../layout/category-product.html", "../data/products.json")
+
+    @@include("../layout/footer.html")
+    <script src="./js/pages/main/main.js"></script>
+    <script type="module" src="./js/pages/main/swiper.js"></script>
+
+</body>
+</html>

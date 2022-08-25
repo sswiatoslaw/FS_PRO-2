@@ -1,0 +1,41 @@
+[
+  {
+    "title": "STREETSTER NATHAN",
+    "price": 500,
+    "description-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description-2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "color": ["black", "blue", "red"],
+    "images": [
+      "../images/shop/bike.png",
+      "../images/shop/bike.png",
+      "../images/shop/bike.png",
+      "../images/shop/bike.png"
+    ]
+  },
+  {
+    "title": "STREETSTER BAKERSTREET",
+    "price": 550,
+    "description-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description-2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "color": ["blue", "white"],
+    "images": [
+      "../images/shop/bike-2.png",
+      "../images/shop/bike-2.png",
+      "../images/shop/bike-2.png",
+      "../images/shop/bike-2.png"
+    ]
+  },
+  {
+    "title": "STREETSTER BROADWAY",
+    "price": 500,
+    "description-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description-2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "color": ["red", "orange"],
+    "images": [
+      "../images/shop/bike-3.png",
+      "../images/shop/bike-3.png",
+      "../images/shop/bike-3.png",
+      "../images/shop/bike-3.png"
+    ]
+  }
+]

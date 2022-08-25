@@ -33,80 +33,28 @@
         "name": "Новинки"
         })
 
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="news__card">
-                        <img class="news__card-image" src="../images/news/image-1.png" alt="">
-                        <div class="news__card-body">
-                            <h3>Lorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-
-                        </div>
-                        <button class="news__card-button">READ</button>
-                    </div>
+        <div class="news-wrapper">
+            <h1 class="news-title">News</h1>
+            <div class="swiper news-swiper">
+                <div class="swiper-wrapper">
+                    @@loop("../layout/news-card.html", "../data/news.json")
                 </div>
-                <div class="swiper-slide">
-                    <div class="news__card">
-                        <img class="news__card-image" src="../images/news/image-1.png" alt="">
-                        <div class="news__card-body">
-                            <h3>Lorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-
-                        </div>
-                        <button class="news__card-button">READ</button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news__card">
-                        <img class="news__card-image" src="../images/news/image-1.png" alt="">
-                        <div class="news__card-body">
-                            <h3>Lorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-
-                        </div>
-                        <button class="news__card-button">READ</button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news__card">
-                        <img class="news__card-image" src="../images/news/image-1.png" alt="">
-                        <div class="news__card-body">
-                            <h3>Lorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-
-                        </div>
-                        <button class="news__card-button">READ</button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news__card">
-                        <img class="news__card-image" src="../images/news/image-1.png" alt="">
-                        <div class="news__card-body">
-                            <h3>Lorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-
-                        </div>
-                        <button class="news__card-button">READ</button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news__card">
-                        <img class="news__card-image" src="../images/news/image-1.png" alt="">
-                        <div class="news__card-body">
-                            <h3>Lorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-
-                        </div>
-                        <button class="news__card-button">READ</button>
-                    </div>
-                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
 
-    <script src="./js/script.js"></script>
-    <script type="module" src="./js/pages/main/swiper.js"></script>
+        <div class="newsletter-wrapper">
+            <h1 class="newsletter-title">Subscribe to our newsletter</h1>
+            <form class="newsletter__form">
+                <input class="newsletter__form-email" placeholder="Email" type="email">
+                <button class="newsletter__form-submit">Subscribe</button>
+            </form>
+        </div>
+
+        @@include("../layout/footer.html")
+
+        <script src="./js/pages/main/main.js"></script>
+        <script type="module" src="./js/pages/main/swiper.js"></script>
 </body>
 </html>

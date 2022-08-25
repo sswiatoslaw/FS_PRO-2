@@ -1,0 +1,30 @@
+.footer{
+  padding: 70px 70px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 150px;
+  grid-row-gap: 50px;
+  justify-items: center;
+  background: black;
+  &-copyright{
+    grid-column-start: 2;
+    grid-column-end: 5;
+    color: #484848;
+  }
+  &-logo{
+    max-height: 65px;
+  }
+  &__menu{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &-item.bold{
+      font-weight: 700;
+    }
+    &-link{
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
