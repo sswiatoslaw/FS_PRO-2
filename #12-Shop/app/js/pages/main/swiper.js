@@ -20,3 +20,5 @@ const swiper1 = new Swiper(".product-swiper", {
         el: ".swiper-pagination",
     },
 });
+
+

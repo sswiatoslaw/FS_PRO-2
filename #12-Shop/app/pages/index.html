@@ -24,20 +24,15 @@
                 <button>more info</button>
             </div>
         </div>
-        @@include('../layout/categories.html', {
-            "index": "1",
-            "name": "Категории"
-        })
-        @@include('../layout/categories.html', {
-        "index": "2",
-        "name": "Новинки"
-        })
+
+        <div class="categories-wrapper container">
+
+        </div>
 
         <div class="news-wrapper">
             <h1 class="news-title">News</h1>
             <div class="swiper news-swiper">
                 <div class="swiper-wrapper">
-                    @@loop("../layout/news-card.html", "../data/news.json")
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
