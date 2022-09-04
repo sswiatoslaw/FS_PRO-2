@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <title>Product page</title>
 </head>
 <body>
-$END$
+        <div class="header-product">
+            @@include('../layout/header.html', {"theme": "black"})
+        </div>
+
+    <div class="product-wrapper">
+        <div class="product__info">
+
+        </div>
+        <div class="product__actions"></div>
+    </div>
+
+    @@include("../layout/footer.html")
+        <script src="./js/pages/product/product.js"></script>
+        <script type="module" src="./js/pages/main/swiper.js"></script>
 </body>
 </html>

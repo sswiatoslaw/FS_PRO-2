@@ -5,6 +5,14 @@
   align-items: center;
   width: 100%;
   align-self: center;
+  &-product{
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+  }
+  & svg{
+    filter: invert(100%) sepia(19%) saturate(0%) hue-rotate(144deg) brightness(105%) contrast(105%);
+  }
   &__social{
     height: 28px;
     &-wrapper{

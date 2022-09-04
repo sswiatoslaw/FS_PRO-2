@@ -21,4 +21,17 @@ const swiper1 = new Swiper(".product-swiper", {
     },
 });
 
+const swiper2 = new Swiper(".current-product-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+    },
+});
+
+
 

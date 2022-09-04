@@ -1,0 +1,13 @@
+.product{
+  &-wrapper{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+  &__info{
+    height: 500px;
+    background-color: #F2F2F2;
+  }
+  &__actions{
+
+  }
+}

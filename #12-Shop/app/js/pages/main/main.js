@@ -11,31 +11,36 @@ const toggleMenu = () => {
 
 toggleMenu();
 
+function Card() {
+}
+Card.prototype.render = function (currentClass, currentElements) {
+    const currentWrapper = document.querySelector(currentClass);
+    currentElements.forEach(currentElement => {
+        currentWrapper.append(currentElement);
+    })
+}
+
 function CategoriesCard(index, name, arrayCards) {
+    Card.call(this);
+
     this.index = index;
     this.name = name;
     this.arrayCards = arrayCards;
 
-    this.render = function() {
-        const currentWrapper = document.querySelector('.categories-wrapper');
-        currentWrapper.append(this.createTitle(this.index, this.name));
-        currentWrapper.append(this.createCardWrapper(this.arrayCards))
-    }
-
-    this.createTitle = function(index, title) {
+    this.createTitle = function() {
         const currentTitle = document.createElement('h2');
         currentTitle.classList.add('categories-title');
         const createTitleSpan = document.createElement('span');
-        createTitleSpan.textContent = index;
+        createTitleSpan.textContent = this.index;
         currentTitle.append(createTitleSpan);
-        currentTitle.textContent = title;
+        currentTitle.textContent = this.name;
         return currentTitle
     }
 
-    this.createCardWrapper = function(array) {
+    this.createCardWrapper = function() {
         const currentCardWrapper = document.createElement('div');
         currentCardWrapper.classList.add('categories__card-wrapper');
-        array.forEach((card) => {
+        this.arrayCards.forEach((card) => {
             currentCardWrapper.append(this.createCard(card));
         })
         return currentCardWrapper
@@ -65,15 +70,13 @@ function CategoriesCard(index, name, arrayCards) {
     }
 }
 
+CategoriesCard.prototype = Object.create(Card.prototype);
+
 const NewsCard = function(newsCard) {
+    Card.call(this);
     this.title = newsCard.title;
     this.description = newsCard.description;
     this.image = newsCard.image;
-
-    this.render = function (){
-        const currentWrapper = document.querySelector('.news-swiper .swiper-wrapper');
-        currentWrapper.append(this.createSwiperWrapper());
-    }
 
     this.createSwiperWrapper = function() {
         const swiperWrapper = document.createElement('div');
@@ -121,6 +124,8 @@ const NewsCard = function(newsCard) {
     }
 }
 
+NewsCard.prototype = Object.create(Card.prototype);
+
 const categoriesBlock = new CategoriesCard(
     1,
     'Категории',
@@ -159,90 +164,6 @@ const noveltiesBlock = new CategoriesCard(
     ]
 );
 
-function ProductCard(product) {
-    this.title = product.title;
-    this.price = product.price;
-    this.description1 = product.description1;
-    this.description2 = product.description2;
-    this.colors = product.colors;
-    this.images = product.images;
-
-    this.render = function() {
-
-    }
-
-    this.createProductAbout = function () {
-        const productAbout = document.createElement('div');
-        productAbout.classList.add('category__product-about')
-        productAbout.append(
-            this.createProductTitle(),
-            this.createProductPrice(),
-            this.createProductDescription(),
-            this.createProductColors(),
-            this.createProductButton()
-        )
-        return productAbout
-    }
-
-    this.createProductTitle = function() {
-        const productTitle = document.createElement('h2');
-        productTitle.classList.add('category__product-title');
-        productTitle.textContent = this.title;
-        return productTitle
-    }
-
-    this.createProductPrice = function() {
-        const productPrice = document.createElement('h4');
-        productPrice.classList.add('category__product-price');
-        productPrice.textContent = `${this.price} $`;
-        return productPrice;
-    }
-
-    this.createProductDescription = function() {
-        const descriptionWrapper = document.createElement('p');
-        descriptionWrapper.classList.add('category__product-description');
-        const description1 = document.createElement('span')
-        description1.textContent = this.description1;
-        const description2 = document.createElement('p')
-        description2.textContent = this.description2;
-        descriptionWrapper.append(
-            description1,
-            description2
-        )
-        return descriptionWrapper
-    }
-
-    this.createProductColors = function() {
-        const colorWrapper = document.createElement('div');
-        colorWrapper.classList.add('category__color-wrapper');
-        const colorTitle = document.createElement('h2');
-        colorTitle.textContent = 'Available colors:';
-        const colorList = document.createElement('div');
-        this.colors.forEach(color => {
-            colorList.append(this.createProductColorButton(color));
-        })
-        colorWrapper.append(
-            colorTitle,
-            colorList
-        )
-        return colorWrapper
-    }
-
-    this.createProductColorButton = function(color) {
-        const currentColor = document.createElement('button');
-        currentColor.classList.add('category__color-item');
-        currentColor.classList.add(color)
-        return currentColor
-    }
-
-    this.createProductButton = function() {
-        const currentButton = document.createElement('button');
-        currentButton.classList.add('category__product-button');
-        currentButton.textContent = 'MORE INFO';
-        return currentButton
-    }
-}
-
 const newsArray = [
     {
         "title": "Lorem ipsum",
@@ -278,7 +199,7 @@ const newsArray = [
 
 newsArray.forEach((news) => {
     const currentNews = new NewsCard(news);
-    currentNews.render();
+    currentNews.render('.news-swiper .swiper-wrapper', [currentNews.createSwiperWrapper()]);
 })
-categoriesBlock.render()
-noveltiesBlock.render()
+categoriesBlock.render('.categories-wrapper', [categoriesBlock.createTitle(), categoriesBlock.createCardWrapper()])
+noveltiesBlock.render('.categories-wrapper', [noveltiesBlock.createTitle(), noveltiesBlock.createCardWrapper()])

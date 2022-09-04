@@ -100,7 +100,29 @@
     &-button{
       background: none;
       border: 3px solid black;
-      color: black;
+      cursor: pointer;
+      transition: 0.5s;
+      & a{
+        text-decoration: none;
+        color: black;
+        transition: 0.5s;
+      }
+      &:hover{
+        background: #b2b2b2;
+        transition: 0.5s;
+        & a{
+          transition: 0.5s;
+          color: white;
+        }
+      }
+      &:focus{
+        background: grey;
+        transition: 0.5s;
+        & a{
+          transition: 0.5s;
+          color: white;
+        }
+      }
     }
     &-images{
       display: flex;
