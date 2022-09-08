@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      class Car {
+        constructor(model, brand, color = Car.getDefaultColor()) {
+            this.model = model;
+            this.brand = brand;
+            this.color = color;
+            this._new = true;
+        }
+
+          static getDefaultColor() {
+              return 'white'
+          }
+
+          get isNewCar() {
+            return this._new ? `Car ${this.brand} ${this.model} is new!!` : `This ${this.brand} ${this.model} not new! :(`
+          }
+
+          set isNewCar(value) {
+            if(value !== undefined && typeof value === 'boolean') {
+                this._new = value;
+            } else {
+                console.error("Error! Please enter a valid value.");
+            }
+          }
+
+        drive() {
+            this.isNewCar = false;
+            console.log(`This ${this.model} drive!!`);
+        }
+      }
+
+      class Tesla extends Car {
+            constructor(object, ...args) {
+                super(...args);
+                this.motor = object.motor;
+            }
+
+            horn() {
+                console.log(`This ${this.brand} is horn!`);
+            }
+      }
+
+      const modelX = new Tesla({motor: 'P100D'},'Model X', 'Tesla');
+      console.log(modelX);
+      modelX.horn();
+      const bmw = new Car('M5', 'BMW', 'Black');
+      console.log(bmw.isNewCar);
+      bmw.drive();
+      console.log(bmw.isNewCar);
+      console.log(bmw);
+    </script>
+</body>
+</html>

@@ -1,20 +1,26 @@
-function ProductCard(product, id) {
-    this.title = product.title;
-    this.price = product.price;
-    this.description1 = product.description1;
-    this.description2 = product.description2;
-    this.colors = product.colors;
-    this.images = product.images;
+import { Card } from '../main/classes.js'
 
-    this.render = function() {
-        const productWrapper = document.querySelector('.category__product-wrapper');
-        const currentProduct = document.createElement('div');
-        currentProduct.classList.add('category__product-item');
-        currentProduct.append(this.createProductAbout(), this.createProductImages());
-        productWrapper.append(currentProduct);
+class ProductCard extends Card {
+    constructor(properties) {
+        super(properties);
+        this.id = properties.id;
+        this.price = properties.price;
+        this.description1 = properties.description1;
+        this.description2 = properties.description2;
+
+        this.render(
+            '.category__product-wrapper',
+            [this.createProductItem()]
+        )
+    }
+    createProductItem() {
+        const currentProductItem = document.createElement('div');
+        currentProductItem.classList.add('category__product-item');
+        currentProductItem.append(this.createProductAbout(), this.createProductImages());
+        return currentProductItem
     }
 
-    this.createProductImages = function() {
+    createProductImages() {
         const productImagesWrapper = document.createElement('div');
         productImagesWrapper.classList.add('categories__product-images');
         const swiper = document.createElement('div');
@@ -34,13 +40,13 @@ function ProductCard(product, id) {
             swiperPagination
         );
         productImagesWrapper.append(swiper);
-        this.images.forEach((image) => {
+        this.data.images.forEach((image) => {
             swiperWrapper.append(this.createProductImage(image));
         })
         return productImagesWrapper
     }
 
-    this.createProductAbout = function () {
+    createProductAbout() {
         const productAbout = document.createElement('div');
         productAbout.classList.add('category__product-about')
         productAbout.append(
@@ -53,21 +59,21 @@ function ProductCard(product, id) {
         return productAbout
     }
 
-    this.createProductTitle = function() {
+    createProductTitle() {
         const productTitle = document.createElement('h2');
         productTitle.classList.add('category__product-title');
-        productTitle.textContent = this.title;
+        productTitle.textContent = this.name;
         return productTitle
     }
 
-    this.createProductPrice = function() {
+    createProductPrice() {
         const productPrice = document.createElement('h4');
         productPrice.classList.add('category__product-price');
         productPrice.textContent = `${this.price} $`;
         return productPrice;
     }
 
-    this.createProductDescription = function() {
+    createProductDescription() {
         const descriptionWrapper = document.createElement('p');
         descriptionWrapper.classList.add('category__product-description');
         const description1 = document.createElement('span')
@@ -81,13 +87,13 @@ function ProductCard(product, id) {
         return descriptionWrapper
     }
 
-    this.createProductColors = function() {
+    createProductColors() {
         const colorWrapper = document.createElement('div');
         colorWrapper.classList.add('category__color-wrapper');
         const colorTitle = document.createElement('h2');
         colorTitle.textContent = 'Available colors:';
         const colorList = document.createElement('div');
-        this.colors.forEach(color => {
+        this.data.colors.forEach(color => {
             colorList.append(this.createProductColorButton(color));
         })
         colorWrapper.append(
@@ -97,21 +103,21 @@ function ProductCard(product, id) {
         return colorWrapper
     }
 
-    this.createProductColorButton = function(color) {
+    createProductColorButton(color) {
         const currentColor = document.createElement('button');
         currentColor.classList.add('category__color-item');
         currentColor.classList.add(color)
         return currentColor
     }
 
-    this.createProductButton = function() {
+    createProductButton() {
         const currentButton = document.createElement('button');
         currentButton.classList.add('category__product-button');
-        currentButton.innerHTML = `<a href="/product.html?id=${id}">MORE INFO</a>`;
+        currentButton.innerHTML = `<a href="/product.html?id=${this.id}">MORE INFO</a>`;
         return currentButton
     }
 
-    this.createProductImage = function(image) {
+    createProductImage(image) {
         const swiperWrapper = document.createElement('div');
         swiperWrapper.classList.add('swiper-slide');
         const currentImage = document.createElement('img');
@@ -123,47 +129,52 @@ function ProductCard(product, id) {
 
 const productArray = [
     {
-        "title": "STREETSTER NATHAN",
+        "name": "STREETSTER NATHAN",
         "price": 500,
         "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "colors": ["black", "blue", "red"],
-        "images": [
-            "../images/shop/bike.png",
-            "../images/shop/bike.png",
-            "../images/shop/bike.png",
-            "../images/shop/bike.png"
-        ]
+        "data": {
+            "colors": ["black", "blue", "red"],
+            "images": [
+                "../images/shop/bike.png",
+                "../images/shop/bike.png",
+                "../images/shop/bike.png",
+                "../images/shop/bike.png"
+            ]
+        }
     },
     {
-        "title": "STREETSTER BAKERSTREET",
+        "name": "STREETSTER BAKERSTREET",
         "price": 550,
         "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "colors": ["blue", "white"],
-        "images": [
-            "../images/shop/bike-2.png",
-            "../images/shop/bike-2.png",
-            "../images/shop/bike-2.png",
-            "../images/shop/bike-2.png"
-        ]
+        "data": {
+            "colors": ["blue", "white"],
+            "images": [
+                "../images/shop/bike-2.png",
+                "../images/shop/bike-2.png",
+                "../images/shop/bike-2.png",
+                "../images/shop/bike-2.png"
+            ]
+        }
     },
     {
-        "title": "STREETSTER BROADWAY",
+        "name": "STREETSTER BROADWAY",
         "price": 500,
         "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "colors": ["red", "orange"],
-        "images": [
-            "../images/shop/bike-3.png",
-            "../images/shop/bike-3.png",
-            "../images/shop/bike-3.png",
-            "../images/shop/bike-3.png"
-        ]
+        "data": {
+            "colors": ["red", "orange"],
+            "images": [
+                "../images/shop/bike-3.png",
+                "../images/shop/bike-3.png",
+                "../images/shop/bike-3.png",
+                "../images/shop/bike-3.png"
+            ]
+        }
     }
 ]
 
-productArray.forEach((product, index) => {
-    const currentProduct = new ProductCard(product, index);
-    currentProduct.render();
+productArray.forEach((product, id) => {
+    const currentProduct = new ProductCard({...product, id: id});
 })
