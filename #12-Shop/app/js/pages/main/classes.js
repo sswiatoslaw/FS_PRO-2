@@ -39,7 +39,7 @@ export class CategoriesCard extends Card {
     createCardWrapper() {
         const currentCardWrapper = document.createElement('div');
         currentCardWrapper.classList.add('categories__card-wrapper');
-        this.dataArray.forEach((card) => {
+        this.data.forEach((card) => {
             currentCardWrapper.append(this.createCard(card));
         })
         return currentCardWrapper

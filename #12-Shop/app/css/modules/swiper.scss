@@ -1,4 +1,7 @@
 .swiper{
+  &-slide{
+    background: none;
+  }
   &-button{
     &-next{
       color: #000000 !important;

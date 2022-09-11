@@ -481,6 +481,9 @@ button {
   color: #000000;
 }
 
+.swiper-slide {
+  background: none;
+}
 .swiper-button-next {
   color: #000000 !important;
 }
@@ -488,11 +491,127 @@ button {
   color: #000000 !important;
 }
 
+.product__price-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product__price-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.product__price-price {
+  font-size: 24px;
+  font-weight: 400;
+  color: black;
+}
+.product__total-button {
+  background: none;
+  border: 3px solid black;
+  color: black;
+  transition: 0.5s;
+}
+.product__total-button:hover {
+  transition: 0.5s;
+  border: 3px solid white;
+  background: black;
+  color: white;
+}
+.product__total-wrapper {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+.product__base-title {
+  padding: 10px 0;
+  font-size: 18px;
+  line-height: 23px;
+}
+.product__base-title span {
+  font-weight: 400;
+}
+.product__base-button {
+  display: flex;
+  padding: 10px;
+  background: none;
+  color: black;
+  border: 3px solid black;
+}
+.product__base-button.active .product__base-button-check {
+  background: black;
+}
+.product__base-button-check {
+  position: relative;
+  margin: 5px 10px;
+  width: 15px;
+  height: 15px;
+}
+.product__base-button-check::before {
+  position: absolute;
+  left: -5.5px;
+  top: -5.5px;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 3px solid black;
+}
+.product__base-button-wrapper {
+  display: flex;
+  gap: 30px;
+}
+.product__color-wrapper {
+  padding: 20px 0;
+  border-top: 1px solid #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+}
+.product__color-title {
+  padding: 10px 0;
+  line-height: 23px;
+  font-size: 18px;
+}
+.product__color-title span {
+  font-weight: 400;
+}
+.product__color-item {
+  padding: 0;
+  margin: 0 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+.product__color-item.black {
+  background: black;
+}
+.product__color-item.blue {
+  background: #5A88FF;
+}
+.product__color-item.red {
+  background: #FF5A5A;
+}
+.product__color-item.white {
+  background: white;
+}
+.product__color-item.orange {
+  background: #FAC154;
+}
+.product-price {
+  font-weight: 400;
+  color: #000000;
+}
 .product-wrapper {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 70% 30%;
 }
-.product__info {
+.product__image {
+  padding: 150px 70px;
   height: 500px;
   background-color: #F2F2F2;
+}
+.product__actions {
+  padding: 150px 70px;
+}
+.product__info-description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
