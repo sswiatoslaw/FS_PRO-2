@@ -1,18 +1,5 @@
 import {CategoriesCard, NewsCard} from "./classes.js";
 
-const toggleMenu = () => {
-    const toggleButtons = document.querySelectorAll('.header__action-menu');
-
-    toggleButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const menu = document.querySelector('.header__menu-wrapper');
-            menu.classList.toggle('hidden');
-        })
-    })
-}
-
-toggleMenu();
-
 const categoriesBlock = new CategoriesCard({
     index: "1",
     name: 'Категории',
@@ -52,39 +39,48 @@ const noveltiesBlock = new CategoriesCard({
     ]
 });
 
-const newsArray = [
-    {
-        "name": "Lorem ipsum",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-        "image": "../images/news/image-1.png"
-    },
-    {
-        "name": "Lorem ipsum",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-        "image": "../images/news/image-2.png"
-    },
-    {
-        "name": "Lorem ipsum",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-        "image": "../images/news/image-3.png"
-    },
-    {
-        "name": "Lorem ipsum",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-        "image": "../images/news/image-2.png"
-    },
-    {
-        "name": "Lorem ipsum",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-        "image": "../images/news/image-1.png"
-    },
-    {
-        "name": "Lorem ipsum",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-        "image": "../images/news/image-3.png"
-    }
-]
+const newsPromise = new Promise((resolve, reject) => {
+    const newsArray = [
+        {
+            "name": "Lorem ipsum",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+            "image": "../images/news/image-1.png"
+        },
+        {
+            "name": "Lorem ipsum",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+            "image": "../images/news/image-2.png"
+        },
+        {
+            "name": "Lorem ipsum",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+            "image": "../images/news/image-3.png"
+        },
+        {
+            "name": "Lorem ipsum",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+            "image": "../images/news/image-2.png"
+        },
+        {
+            "name": "Lorem ipsum",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+            "image": "../images/news/image-1.png"
+        },
+        {
+            "name": "Lorem ipsum",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+            "image": "../images/news/image-3.png"
+        }
+    ]
 
-newsArray.forEach((news) => {
-    const currentNews = new NewsCard(news);
+    if(newsArray) {
+        resolve(newsArray)
+    }
 })
+
+newsPromise.then(value => {
+    value.forEach((news) => {
+        const currentNews = new NewsCard(news);
+    })
+})
+
