@@ -1,0 +1,344 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "category": "mountain",
+      "name": "STREETSTER NATHAN",
+      "price": 500,
+      "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "data": {
+        "colors": ["black", "blue", "red"],
+        "images": [
+          "../images/shop/bike.png",
+          "../images/shop/bike.png",
+          "../images/shop/bike.png",
+          "../images/shop/bike.png"
+        ],
+        "base": [
+          {
+            "details": "(Height 5\"9-6\"0)",
+            "size": "54”"
+          },
+          {
+            "details": "(Height 6\"0-6\"4)",
+            "size": "57”"
+          }
+        ],
+        "accessories": [
+          {
+            "name": "Octane Helmet",
+            "price": 50,
+            "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+          },
+          {
+            "name": "Canyon Shield",
+            "price": 100,
+            "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+          }
+        ]
+      },
+      "comments": [
+        {
+          "name": "Josh B.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Andrew Y.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Andrew Y.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "category": "mountain",
+      "name": "STREETSTER BAKERSTREET",
+      "price": 550,
+      "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "data": {
+        "colors": ["blue", "white"],
+        "images": [
+          "../images/shop/bike-2.png",
+          "../images/shop/bike-2.png",
+          "../images/shop/bike-2.png",
+          "../images/shop/bike-2.png"
+        ],
+        "base": [
+          {
+            "details": "(Height 5\"9-6\"0)",
+            "size": "54”"
+          },
+          {
+            "details": "(Height 6\"0-6\"4)",
+            "size": "57”"
+          }
+        ],
+        "accessories": [
+          {
+            "name": "Octane Helmet",
+            "price": 50,
+            "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+          },
+          {
+            "name": "Canyon Shield",
+            "price": 100,
+            "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+          }
+        ]
+      },
+      "comments": [
+        {
+          "name": "Josh B.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Andrew Y.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Andrew Y.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "category": "mountain",
+      "name": "STREETSTER BROADWAY",
+      "price": 500,
+      "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "data": {
+        "colors": ["red", "orange"],
+        "images": [
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png"
+        ],
+        "base": [
+          {
+            "details": "(Height 5\"9-6\"0)",
+            "size": "54”"
+          },
+          {
+            "details": "(Height 6\"0-6\"4)",
+            "size": "57”"
+          }
+        ],
+        "accessories": [
+          {
+            "name": "Octane Helmet",
+            "price": 50,
+            "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+          },
+          {
+            "name": "Canyon Shield",
+            "price": 100,
+            "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+          }
+        ]
+      },
+      "comments": [
+        {
+          "name": "Josh B.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "category": "street",
+      "name": "STREETSTER BAKERSTREET",
+      "price": 700,
+      "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "data": {
+        "colors": ["blue", "white"],
+        "images": [
+          "../images/shop/bike-2.png",
+          "../images/shop/bike-2.png",
+          "../images/shop/bike-2.png",
+          "../images/shop/bike-2.png"
+        ],
+        "base": [
+          {
+            "details": "(Height 5\"9-6\"0)",
+            "size": "54”"
+          },
+          {
+            "details": "(Height 6\"0-6\"4)",
+            "size": "57”"
+          }
+        ],
+        "accessories": [
+          {
+            "name": "Octane Helmet",
+            "price": 50,
+            "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+          },
+          {
+            "name": "Canyon Shield",
+            "price": 100,
+            "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+          }
+        ]
+      },
+      "comments": [
+        {
+          "name": "Josh B.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Andrew Y.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Josh B.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Andrew Y.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "category": "street",
+      "name": "STREETSTER BROADWAY",
+      "price": 2000,
+      "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "data": {
+        "colors": ["red", "orange"],
+        "images": [
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png"
+        ],
+        "base": [
+          {
+            "details": "(Height 5\"9-6\"0)",
+            "size": "54”"
+          },
+          {
+            "details": "(Height 6\"0-6\"4)",
+            "size": "57”"
+          }
+        ],
+        "accessories": [
+          {
+            "name": "Octane Helmet",
+            "price": 50,
+            "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+          },
+          {
+            "name": "Canyon Shield",
+            "price": 100,
+            "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+          }
+        ]
+      },
+      "comments": [
+        {
+          "name": "Josh B.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "category": "road",
+      "name": "STREETSTER BROADWAY",
+      "price": 1500,
+      "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "data": {
+        "colors": ["red", "orange"],
+        "images": [
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png",
+          "../images/shop/bike-3.png"
+        ],
+        "base": [
+          {
+            "details": "(Height 5\"9-6\"0)",
+            "size": "54”"
+          },
+          {
+            "details": "(Height 6\"0-6\"4)",
+            "size": "57”"
+          }
+        ],
+        "accessories": [
+          {
+            "name": "Octane Helmet",
+            "price": 50,
+            "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+          },
+          {
+            "name": "Canyon Shield",
+            "price": 100,
+            "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+          }
+        ]
+      },
+      "comments": [
+        {
+          "name": "Josh B.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        },
+        {
+          "name": "Andrew Y.",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        }
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "name": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      "image": "../images/news/image-1.png"
+    },
+    {
+      "id": 2,
+      "name": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      "image": "../images/news/image-2.png"
+    },
+    {
+      "id": 3,
+      "name": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      "image": "../images/news/image-3.png"
+    },
+    {
+      "id": 4,
+      "name": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      "image": "../images/news/image-2.png"
+    },
+    {
+      "id": 5,
+      "name": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      "image": "../images/news/image-1.png"
+    },
+    {
+      "id": 6,
+      "name": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      "image": "../images/news/image-3.png"
+    }
+  ]
+}

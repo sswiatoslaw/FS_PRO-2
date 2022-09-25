@@ -265,7 +265,8 @@ export class CurrentProduct extends Card {
         this.id = properties.id;
         this.price = properties.price;
         this.data = properties.data;
-        this.description = properties.description;
+        this.description = properties.description1 + properties.description2;
+        this.comments = properties.comments;
 
         this.render('.product__image', [this.renderSwiper()])
         this.render('.product__actions', [
@@ -273,10 +274,12 @@ export class CurrentProduct extends Card {
             this.createProductPrice(),
             this.createProductColors(),
             this.createProductBase(),
+            this.createProductAccessories(),
             this.createTotalButton()
         ])
-        this.render('.product__info', [
-            this.createProductDescription()
+        this.render('.product__details-wrapper', [
+            this.createDetailsDescription(),
+            this.createDetailsReviews()
         ])
     }
 
@@ -395,6 +398,58 @@ export class CurrentProduct extends Card {
         return currentBaseButton
     }
 
+    createProductAccessories() {
+        const accessoriesWrapper = document.createElement("div");
+        accessoriesWrapper.classList.add('product__accessories-wrapper');
+
+        const accessoriesItemWrapper = document.createElement("div");
+        accessoriesItemWrapper.classList.add('product__accessories-item-wrapper');
+
+        const accessoriesTitle = document.createElement('h2');
+        accessoriesTitle.classList.add('product__accessories-title');
+        accessoriesTitle.textContent = 'Additional accessories: ';
+
+        this.data.accessories.forEach((element) => {
+            accessoriesItemWrapper.append(this.createProductAccessoriesItem(element));
+        });
+
+        accessoriesWrapper.append(accessoriesTitle, accessoriesItemWrapper);
+
+
+        return accessoriesWrapper
+    }
+
+    createProductAccessoriesItem(item) {
+        const accessoriesItemWrapper = document.createElement("div");
+        accessoriesItemWrapper.classList.add('product__accessories-item');
+
+        const accessoriesItemImage = document.createElement('img');
+        accessoriesItemImage.classList.add("product__accessories-image");
+        accessoriesItemImage.src = item.image;
+
+        const accessoriesItemName = document.createElement("h2");
+        accessoriesItemName.classList.add('product__accessories-name');
+        accessoriesItemName.textContent = item.name;
+
+        const accessoriesItemPrice = document.createElement('h4');
+        accessoriesItemPrice.classList.add('product__accessories-price');
+        accessoriesItemPrice.textContent = `${item.price} $`;
+
+        const accessoriesItemButton = document.createElement('button');
+        accessoriesItemButton.classList.add("product__accessories-button");
+
+        accessoriesItemButton.addEventListener('click', (event) => {
+            event.target.classList.toggle("added");
+        })
+        accessoriesItemWrapper.append(
+            accessoriesItemImage,
+            accessoriesItemName,
+            accessoriesItemPrice,
+            accessoriesItemButton
+        )
+        return accessoriesItemWrapper
+    }
+
     createTotalButton() {
         const totalWrapper = document.createElement('div');
         totalWrapper.classList.add('product__total-wrapper');
@@ -421,21 +476,66 @@ export class CurrentProduct extends Card {
         return totalWrapper
     }
 
-    createProductDescription() {
+    createDetailsDescription() {
         const descriptionWrapper = document.createElement('div');
-        descriptionWrapper.classList.add('product__info-description');
+        descriptionWrapper.classList.add('product__details-description');
+
         const descriptionTitle = document.createElement('h2');
+        descriptionTitle.classList.add('product__details-title');
         descriptionTitle.textContent = 'Description';
         const description = document.createElement('p');
         description.classList.add('category__product-description');
         description.textContent = this.description;
 
-        descriptionWrapper.append(
-            descriptionTitle,
-            description
-        )
+        descriptionWrapper.append(descriptionTitle, description);
 
         return descriptionWrapper
+    }
+
+    createDetailsReviews() {
+        const reviewsWrapper = document.createElement('div');
+        reviewsWrapper.classList.add('product__reviews-wrapper');
+
+        const reviewsTitle = document.createElement('h2');
+        reviewsTitle.classList.add('product__details-title');
+        reviewsTitle.textContent = "Reviews";
+
+        reviewsWrapper.append(reviewsTitle);
+
+        this.comments.forEach(comment => {
+            reviewsWrapper.append(this.createDetailsReviewsItem(comment));
+        })
+
+        return reviewsWrapper
+    }
+
+    createDetailsReviewsItem(item) {
+        const reviewsItemWrapper = document.createElement('div');
+        reviewsItemWrapper.classList.add('product__reviews-item');
+
+        const reviewsItemName = document.createElement('h2');
+        reviewsItemName.classList.add('product__reviews-name');
+        reviewsItemName.textContent = item.name;
+
+        const reviewsItemText = document.createElement('p');
+        reviewsItemText.classList.add('product__reviews-text');
+        reviewsItemText.textContent = item.text;
+
+        reviewsItemWrapper.append(reviewsItemName, reviewsItemText);
+
+        return reviewsItemWrapper
+    }
+
+
+}
+
+export class Server {
+    constructor() {
+        this.serverUrl = "http://localhost:4800/";
+    }
+
+    request = (url) => {
+        return fetch(`${this.serverUrl}${url}`).then((response) => response.json())
     }
 }
 
@@ -467,8 +567,34 @@ export class Data {
                                 'details': '(Height 6\'0-6\'4)',
                                 "size": '57”'
                             }
+                        ],
+                        "accessories": [
+                            {
+                                "name": "Octane Helmet",
+                                "price": 50,
+                                "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+                            },
+                            {
+                                "name": "Canyon Shield",
+                                "price": 100,
+                                "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+                            }
                         ]
-                    }
+                    },
+                    "comments": [
+                        {
+                            "name": "Josh B.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Andrew Y.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Andrew Y.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        }
+                    ]
                 },
                 {
                     "id": "2",
@@ -493,8 +619,34 @@ export class Data {
                                 'details': '(Height 6\'0-6\'4)',
                                 "size": '57”'
                             }
+                        ],
+                        "accessories": [
+                            {
+                                "name": "Octane Helmet",
+                                "price": 50,
+                                "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+                            },
+                            {
+                                "name": "Canyon Shield",
+                                "price": 100,
+                                "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+                            }
                         ]
-                    }
+                    },
+                    "comments": [
+                        {
+                            "name": "Josh B.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Andrew Y.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Andrew Y.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        }
+                    ]
                 },
                 {
                     "id": "3",
@@ -519,8 +671,26 @@ export class Data {
                                 'details': '(Height 6\'0-6\'4)',
                                 "size": '57”'
                             }
+                        ],
+                        "accessories": [
+                            {
+                                "name": "Octane Helmet",
+                                "price": 50,
+                                "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+                            },
+                            {
+                                "name": "Canyon Shield",
+                                "price": 100,
+                                "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+                            }
                         ]
-                    }
+                    },
+                    "comments": [
+                        {
+                            "name": "Josh B.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        }
+                    ]
                 }
             ],
             street: [
@@ -547,8 +717,38 @@ export class Data {
                                 'details': '(Height 6\'0-6\'4)',
                                 "size": '57”'
                             }
+                        ],
+                        "accessories": [
+                            {
+                                "name": "Octane Helmet",
+                                "price": 50,
+                                "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+                            },
+                            {
+                                "name": "Canyon Shield",
+                                "price": 100,
+                                "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+                            }
                         ]
-                    }
+                    },
+                    "comments": [
+                        {
+                            "name": "Josh B.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Andrew Y.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Josh B.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Andrew Y.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        }
+                    ]
                 },
                 {
                     "id": "5",
@@ -573,8 +773,26 @@ export class Data {
                                 'details': '(Height 6\'0-6\'4)',
                                 "size": '57”'
                             }
+                        ],
+                        "accessories": [
+                            {
+                                "name": "Octane Helmet",
+                                "price": 50,
+                                "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+                            },
+                            {
+                                "name": "Canyon Shield",
+                                "price": 100,
+                                "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+                            }
                         ]
-                    }
+                    },
+                    "comments": [
+                        {
+                            "name": "Josh B.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        }
+                    ]
                 }
             ],
             road: [
@@ -601,8 +819,30 @@ export class Data {
                                 'details': '(Height 6\'0-6\'4)',
                                 "size": '57”'
                             }
+                        ],
+                        "accessories": [
+                            {
+                                "name": "Octane Helmet",
+                                "price": 50,
+                                "image": "../images/accessories/bicycle_helmet_PNG9823.png"
+                            },
+                            {
+                                "name": "Canyon Shield",
+                                "price": 100,
+                                "image": "../images/accessories/168324_Canyon_Ass_Saver_black.png"
+                            }
                         ]
-                    }
+                    },
+                    "comments": [
+                        {
+                            "name": "Josh B.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        },
+                        {
+                            "name": "Andrew Y.",
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        }
+                    ]
                 }
             ]
         }

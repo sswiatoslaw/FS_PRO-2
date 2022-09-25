@@ -1,4 +1,6 @@
-import {CategoriesCard, NewsCard} from "./classes.js";
+import {CategoriesCard, NewsCard, Server} from "./classes.js";
+
+const server = new Server();
 
 const categoriesBlock = new CategoriesCard({
     index: "1",
@@ -39,46 +41,7 @@ const noveltiesBlock = new CategoriesCard({
     ]
 });
 
-const newsPromise = new Promise((resolve, reject) => {
-    const newsArray = [
-        {
-            "name": "Lorem ipsum",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-            "image": "../images/news/image-1.png"
-        },
-        {
-            "name": "Lorem ipsum",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-            "image": "../images/news/image-2.png"
-        },
-        {
-            "name": "Lorem ipsum",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-            "image": "../images/news/image-3.png"
-        },
-        {
-            "name": "Lorem ipsum",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-            "image": "../images/news/image-2.png"
-        },
-        {
-            "name": "Lorem ipsum",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-            "image": "../images/news/image-1.png"
-        },
-        {
-            "name": "Lorem ipsum",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-            "image": "../images/news/image-3.png"
-        }
-    ]
-
-    if(newsArray) {
-        resolve(newsArray)
-    }
-})
-
-newsPromise.then(value => {
+server.request("news").then(value => {
     value.forEach((news) => {
         const currentNews = new NewsCard(news);
     })
