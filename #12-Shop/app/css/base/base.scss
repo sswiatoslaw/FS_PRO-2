@@ -75,6 +75,34 @@ button{
   display: none !important;
 }
 
+.message {
+  text-align: center;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 20px grey;
+  top: 70px;
+  right: 100px;
+  position: fixed;
+  width: 300px;
+  height: 55px;
+  background: #FFDF6B;
+  border-radius: 50px;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.message.hidden{
+  display: block;
+  opacity: 0;
+  transition: 0.5s;
+}
+
 //input::before{
 //  width: 15px;
 //  height: 15px;

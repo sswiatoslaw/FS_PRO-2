@@ -1,3 +1,40 @@
+export class Server {
+    cart = [];
+    constructor() {
+        this.serverUrl = "http://localhost:4800/";
+    }
+
+    request = (url) => {
+        return fetch(`${this.serverUrl}${url}`).then((response) => response.json())
+    }
+
+    requestCart = (item) => {
+        const cartIndex = document.querySelector('.header__action-cartIndex');
+        this.cart.push(item);
+        cartIndex.textContent = this.cart.length;
+        cartIndex.classList.remove('hidden');
+    }
+
+    requestDeleteItemCart = (item) => {
+        this.cart = this.cart.filter(currentItem => currentItem !== item);
+    }
+
+    requestPost = (url, body) => {
+        return fetch(`${this.serverUrl}${url}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: body
+        }).then(value => {
+            return value.json();
+        })
+    }
+}
+
+
+const server = new Server();
+
 export class Card{
     constructor(properties) {
         this.name = properties.name;
@@ -133,13 +170,15 @@ export class NewsCard extends Card {
 }
 
 export class ProductCard extends Card {
+    currentBase = undefined;
+    currentColor = undefined;
+
     constructor(properties) {
         super(properties);
         this.id = properties.id;
         this.price = properties.price;
         this.description1 = properties.description1;
         this.description2 = properties.description2;
-
         this.render(
             '.category__product-wrapper',
             [this.createProductItem()]
@@ -260,6 +299,7 @@ export class ProductCard extends Card {
 }
 
 export class CurrentProduct extends Card {
+    cart = [];
     constructor(properties) {
         super(properties);
         this.id = properties.id;
@@ -267,6 +307,7 @@ export class CurrentProduct extends Card {
         this.data = properties.data;
         this.description = properties.description1 + properties.description2;
         this.comments = properties.comments;
+        this.currentProduct = properties;
 
         this.render('.product__image', [this.renderSwiper()])
         this.render('.product__actions', [
@@ -341,6 +382,7 @@ export class CurrentProduct extends Card {
         this.data.colors.forEach(color => {
             const currentButtonColor = this.createProductColorButton(color);
             currentButtonColor.addEventListener('click', () => {
+                this.currentColor = color;
                 colorTitleText.textContent = color;
             });
             colorList.append(currentButtonColor);
@@ -372,6 +414,8 @@ export class CurrentProduct extends Card {
         this.data.base.forEach(base => {
             const currentBaseButton = this.createProductBaseButton(base.size);
             currentBaseButton.addEventListener('click', () => {
+                this.currentBase = base.size;
+                console.log(this.currentBase);
                 baseTitleText.textContent = `${base.size} ${base.details}`
                 const arrayBaseButton = document.querySelectorAll('.product__base-button');
                 arrayBaseButton.forEach(currentButton => {
@@ -439,6 +483,15 @@ export class CurrentProduct extends Card {
         accessoriesItemButton.classList.add("product__accessories-button");
 
         accessoriesItemButton.addEventListener('click', (event) => {
+            item.isAddedToCart = !item.isAddedToCart;
+            if(item.isAddedToCart) {
+                this.cart.push(item);
+                server.requestCart(item);
+                this.editTotalPrice(this.getTotalPrice() + item.price);
+            } else {
+                this.cart = this.cart.filter(currentItem => currentItem !== item);
+                this.editTotalPrice(this.getTotalPrice() - item.price);
+            }
             event.target.classList.toggle("added");
         })
         accessoriesItemWrapper.append(
@@ -448,6 +501,27 @@ export class CurrentProduct extends Card {
             accessoriesItemButton
         )
         return accessoriesItemWrapper
+    }
+
+    getTotalPrice() {
+        const totalPrice = document.querySelector('.product__price-price');
+        return +totalPrice.textContent.split(' ')[0]
+    }
+
+
+    editTotalPrice(price) {
+        console.log(price)
+        const totalPrice = document.querySelector('.product__price-price');
+        totalPrice.textContent = `${price} $`;
+    }
+
+    showError(error) {
+        const message = document.querySelector('.message');
+        message.textContent = error;
+        message.classList.remove('hidden');
+        setTimeout(() => {
+            message.classList.add('hidden');
+        }, 5000)
     }
 
     createTotalButton() {
@@ -462,6 +536,18 @@ export class CurrentProduct extends Card {
         totalPrice.classList.add('product__price-price');
         totalPrice.textContent = `${this.price} $`;
         const totalButton = document.createElement('button');
+        totalButton.addEventListener('click', () => {
+            if(!this.currentColor || !this.currentBase) {
+                this.showError('Виберіть обовʼязкові параметри!!');
+            } else {
+                this.currentProduct.color = this.currentColor;
+                this.currentProduct.base = this.currentBase;
+                delete this.currentProduct.data;
+                delete this.currentProduct.comments;
+                this.cart.push(this.currentProduct);
+                console.log(this.cart);
+            }
+        })
         totalButton.classList.add('product__total-button');
         totalButton.textContent = 'ADD TO CART';
         priceWrapper.append(
@@ -525,20 +611,7 @@ export class CurrentProduct extends Card {
 
         return reviewsItemWrapper
     }
-
-
 }
-
-export class Server {
-    constructor() {
-        this.serverUrl = "http://localhost:4800/";
-    }
-
-    request = (url) => {
-        return fetch(`${this.serverUrl}${url}`).then((response) => response.json())
-    }
-}
-
 
 export class Data {
     constructor() {

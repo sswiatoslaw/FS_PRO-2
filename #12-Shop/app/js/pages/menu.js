@@ -27,7 +27,7 @@ const searchItem = (item) => {
     const searchItemTitle = document.createElement("h3");
     searchItemTitle.textContent = item.name;
     const searchItemPrice = document.createElement("p");
-    searchItemPrice.textContent = item.price;
+    searchItemPrice.textContent = `${item.price} $`;
     searchItemDetails.append(searchItemTitle, searchItemPrice);
     searchItemWrapper.append(searchItemImage, searchItemDetails);
 
@@ -43,7 +43,6 @@ searchInput.addEventListener('change', (event) => {
         searchDropdown.classList.remove('hidden');
         searchInput.classList.add('active');
         server.request(`products?q=${event.target.value}`).then((response) => {
-            console.log(response);
             response.forEach((item) => {
                 searchDropdown.append(searchItem(item));
             })
