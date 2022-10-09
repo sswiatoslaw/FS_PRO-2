@@ -6,4 +6,3 @@ const server = new Server();
 server.request(`products/${urlParams.get("id")}`).then((value) => {
     const currentProduct = new CurrentProduct(value);
 })
-

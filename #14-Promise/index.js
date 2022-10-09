@@ -1,38 +1,38 @@
-const getRequest = (url) => {
-    return new Promise((resolve, reject) => {
-        let request = new XMLHttpRequest();
-        request.open('GET', url);
+// const getRequest = (url) => {
+//     return new Promise((resolve, reject) => {
+//         let request = new XMLHttpRequest();
+//         request.open('GET', url);
 
-        request.onload = () => {
-            if(request.status === 200) {
-                resolve(request.response);
-            } else {
-                reject(Error('Помилка!'))
-            }
-        }
+//         request.onload = () => {
+//             if(request.status === 200) {
+//                 resolve(request.response);
+//             } else {
+//                 reject(Error('Помилка!'))
+//             }
+//         }
 
-        request.send();
-    })
-}
+//         request.send();
+//     })
+// }
 
-const request = (method ,url, data = null) => {
-    return new Promise((resolve, reject) => {
-        let request = new XMLHttpRequest();
-        request.open(method, url);
+// const request = (method ,url, data = null) => {
+//     return new Promise((resolve, reject) => {
+//         let request = new XMLHttpRequest();
+//         request.open(method, url);
 
-        request.onload = () => {
-            console.log(request)
-            if(request.status === 200) {
-                resolve(request.response);
-            } else {
-                reject(Error('Продукт не створився!'))
-                console.log(request.error);
-            }
-        }
+//         request.onload = () => {
+//             console.log(request)
+//             if(request.status === 200) {
+//                 resolve(request.response);
+//             } else {
+//                 reject(Error('Продукт не створився!'))
+//                 console.log(request.error);
+//             }
+//         }
 
-        request.send(data)
-    })
-}
+//         request.send(data)
+//     })
+// }
 
 // request("POST", 'https://dummyjson.com/products/add', JSON.stringify({title: 'DAN.IT Education'}))
 //     .then((value) => {
@@ -75,37 +75,57 @@ const request = (method ,url, data = null) => {
 
 
 
-fetch('https://dummyjson.com/products/1').then(value => {
-    console.log(value);
-    return value.json()
-}).then(value => {
-    console.log(value);
-})
+const request = fetch('https://dummyjson.com/products/1');
+    // .then(value => {
+    //     console.log(value);
+    //     return value.json()
+    // })
+    // .then(value => {
+    //     console.log(value);
+    // })
 
-const request1 = (method, url, body) => {
-    return fetch(url, {
-        method: method,
-        headers: {
-            "Content-Type": 'application/json'
-        },
-        body: body
-    }).then(value => {
+const requestAsync = async (req) => {
+    try{
+        const response = await req;
+        const value = await response.json();
         console.log(value);
-        return value.json();
-    })
+    } catch(error) {
+        console.log(error)
+    }
+
+    const request1 = await fetch('https://dummyjson.com/products/1').then(res => res.json());
+    console.log(request1);
+    
 }
 
-request1('POST', 'https://dummyjson.com/products/add', JSON.stringify({title: 'DAN.IT'})).then(value => {
-    console.log(value);
-})
 
-request1('PUT', 'https://dummyjson.com/products/1', JSON.stringify({title: 'DAN.IT'})).then(value => {
-    console.log(value);
-})
 
-fetch('https://dummyjson.com/products/1', {method: 'DELETE'}).then((value) => {
-    console.log(value);
-    return value.json();
-}).then(value => {
-    console.log(value);
-})
+requestAsync(request);
+
+// const request1 = (method, url, body) => {
+//     return fetch(url, {
+//         method: method,
+//         headers: {
+//             "Content-Type": 'application/json'
+//         },
+//         body: body
+//     }).then(value => {
+//         console.log(value);
+//         return value.json();
+//     })
+// }
+
+// request1('POST', 'https://dummyjson.com/products/add', JSON.stringify({title: 'DAN.IT'})).then(value => {
+//     console.log(value);
+// })
+
+// request1('PUT', 'https://dummyjson.com/products/1', JSON.stringify({title: 'DAN.IT'})).then(value => {
+//     console.log(value);
+// })
+
+// fetch('https://dummyjson.com/products/1', {method: 'DELETE'}).then((value) => {
+//     console.log(value);
+//     return value.json();
+// }).then(value => {
+//     console.log(value);
+// })

@@ -1,22 +1,16 @@
 export class Server {
     cart = [];
     constructor() {
-        this.serverUrl = "http://localhost:4800/";
+        this.serverUrl = "http://localhost:3000/";
     }
 
     request = (url) => {
-        return fetch(`${this.serverUrl}${url}`).then((response) => response.json())
-    }
-
-    requestCart = (item) => {
-        const cartIndex = document.querySelector('.header__action-cartIndex');
-        this.cart.push(item);
-        cartIndex.textContent = this.cart.length;
-        cartIndex.classList.remove('hidden');
-    }
-
-    requestDeleteItemCart = (item) => {
-        this.cart = this.cart.filter(currentItem => currentItem !== item);
+        return fetch(`${this.serverUrl}${url}`, {
+            method: 'GET',
+      headers: {
+        accept: 'application/json',
+      },
+        }).then((response) => response.json())
     }
 
     requestPost = (url, body) => {
@@ -52,8 +46,11 @@ export class Card{
 
 export class CategoriesCard extends Card {
     constructor(properties) {
+        console.log(properties);
         super(properties);
         this.index = properties.index;
+        this.category = properties.category;
+
         this.render(
             '.categories-wrapper',
             [
@@ -73,11 +70,19 @@ export class CategoriesCard extends Card {
         return currentTitle
     }
 
+    createLinkWrapper(link) {
+        const currentLink = document.createElement('a');
+        currentLink.href = `./category.html?category=${link}`
+        return currentLink;
+    }
+
     createCardWrapper() {
         const currentCardWrapper = document.createElement('div');
         currentCardWrapper.classList.add('categories__card-wrapper');
         this.data.forEach((card) => {
-            currentCardWrapper.append(this.createCard(card));
+            const currentLink = this.createLinkWrapper(card.category);
+            currentLink.append(this.createCard(card));
+            currentCardWrapper.append(currentLink);
         })
         return currentCardWrapper
     }
@@ -322,6 +327,34 @@ export class CurrentProduct extends Card {
             this.createDetailsDescription(),
             this.createDetailsReviews()
         ])
+        this.renderCartIndex();
+    }
+
+    checkLocalCart() {
+        const localCart = JSON.parse(localStorage.getItem('cart'));
+        return {
+            availiable: !!localCart,
+            cart: localCart,
+            index: localCart.length
+        }
+    }
+
+    addToCart(cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.renderCartIndex();
+    }
+
+    renderCartIndex() {
+        const cartIndex = document.querySelectorAll('.header__action-cartIndex');
+        const cartDetails = checkLocalCart();
+        cartIndex.forEach((element) => {
+            if (cartDetails.availiable) {
+                element.textContent = cartDetails.index;
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        })
     }
 
     createSwiper(image) {
@@ -486,7 +519,6 @@ export class CurrentProduct extends Card {
             item.isAddedToCart = !item.isAddedToCart;
             if(item.isAddedToCart) {
                 this.cart.push(item);
-                server.requestCart(item);
                 this.editTotalPrice(this.getTotalPrice() + item.price);
             } else {
                 this.cart = this.cart.filter(currentItem => currentItem !== item);
@@ -545,7 +577,7 @@ export class CurrentProduct extends Card {
                 delete this.currentProduct.data;
                 delete this.currentProduct.comments;
                 this.cart.push(this.currentProduct);
-                console.log(this.cart);
+                this.addToCart(this.cart);
             }
         })
         totalButton.classList.add('product__total-button');

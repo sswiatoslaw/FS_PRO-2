@@ -39,7 +39,7 @@ const searchInput = document.querySelector(".header__search");
 searchInput.addEventListener('change', (event) => {
     const searchDropdown = document.querySelector('.header__search-dropdown');
     searchDropdown.innerHTML = "";
-    if(event.target.value !== "") {
+    if (event.target.value !== "") {
         searchDropdown.classList.remove('hidden');
         searchInput.classList.add('active');
         server.request(`products?q=${event.target.value}`).then((response) => {
@@ -53,3 +53,28 @@ searchInput.addEventListener('change', (event) => {
 
     }
 })
+
+const renderCartIndex = () => {
+    const cartIndex = document.querySelectorAll('.header__action-cartIndex');
+    const cartDetails = checkLocalCart();
+    cartIndex.forEach((element) => {
+        if (cartDetails.availiable) {
+            element.textContent = cartDetails.index;
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
+    })
+}
+
+const checkLocalCart = () => {
+    const localCart = JSON.parse(localStorage.getItem('cart'));
+    return {
+        availiable: !!localCart,
+        cart: localCart,
+        index: localCart.length
+    }
+}
+
+renderCartIndex();
+
