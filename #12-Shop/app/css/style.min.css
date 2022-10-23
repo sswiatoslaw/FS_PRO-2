@@ -99,12 +99,16 @@ input {
   border: none;
 }
 
-button {
+button, .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 40px;
   font-weight: 700;
   font-size: 18px;
   line-height: 23px;
   text-transform: uppercase;
+  text-decoration: none;
   border: none;
   background-color: black;
   color: white;
@@ -167,6 +171,7 @@ button {
   background-color: #F2F2F2;
 }
 .header__search {
+  outline: none;
   max-width: 98.6%;
 }
 .header__search-wrapper {
@@ -183,7 +188,7 @@ button {
   position: absolute;
   width: 100%;
   padding-bottom: 15px;
-  box-shadow: 0 1px 10px black;
+  box-shadow: 0 20px 20px 2px black;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   background: #F2F2F2;
@@ -248,6 +253,46 @@ button {
 .header__action-wrapper {
   display: flex;
   gap: 40px;
+}
+.header__cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 300px;
+  position: absolute;
+  top: 100px;
+  right: -75px;
+  background: #FFF;
+}
+.header__cart-wrapper.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 40px 60px;
+  background: #FFF;
+  color: #000;
+}
+.header__cart-title {
+  padding: 0 30px;
+  padding-top: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.header__cart-total {
+  align-self: end;
+  padding: 0 30px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+}
+.header__cart-price {
+  font-weight: 400;
+}
+.header__cart-button {
+  height: 65px;
 }
 .header__menu svg {
   fill: black;

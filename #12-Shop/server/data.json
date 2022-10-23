@@ -3,13 +3,18 @@
   "products": [
     {
       "id": "1",
+      "amount": 23,
       "category": "mountain",
       "name": "STREETSTER NATHAN",
       "price": 500,
       "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "data": {
-        "colors": ["black", "blue", "red"],
+        "colors": [
+          "black",
+          "blue",
+          "red"
+        ],
         "images": [
           "../images/shop/bike.png",
           "../images/shop/bike.png",
@@ -58,13 +63,17 @@
     },
     {
       "id": "2",
+      "amount": 20,
       "category": "mountain",
       "name": "STREETSTER BAKERSTREET",
       "price": 550,
       "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "data": {
-        "colors": ["blue", "white"],
+        "colors": [
+          "blue",
+          "white"
+        ],
         "images": [
           "../images/shop/bike-2.png",
           "../images/shop/bike-2.png",
@@ -113,13 +122,17 @@
     },
     {
       "id": "3",
+      "amount": 13,
       "category": "mountain",
       "name": "STREETSTER BROADWAY",
       "price": 500,
       "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "data": {
-        "colors": ["red", "orange"],
+        "colors": [
+          "red",
+          "orange"
+        ],
         "images": [
           "../images/shop/bike-3.png",
           "../images/shop/bike-3.png",
@@ -160,13 +173,17 @@
     },
     {
       "id": "4",
+      "amount": 11,
       "category": "street",
       "name": "STREETSTER BAKERSTREET",
       "price": 700,
       "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "data": {
-        "colors": ["blue", "white"],
+        "colors": [
+          "blue",
+          "white"
+        ],
         "images": [
           "../images/shop/bike-2.png",
           "../images/shop/bike-2.png",
@@ -219,13 +236,17 @@
     },
     {
       "id": "5",
+      "amount": 3,
       "category": "street",
       "name": "STREETSTER BROADWAY",
       "price": 2000,
       "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "data": {
-        "colors": ["red", "orange"],
+        "colors": [
+          "red",
+          "orange"
+        ],
         "images": [
           "../images/shop/bike-3.png",
           "../images/shop/bike-3.png",
@@ -266,13 +287,17 @@
     },
     {
       "id": "6",
+      "amount": 10,
       "category": "road",
       "name": "STREETSTER BROADWAY",
       "price": 1500,
       "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "description2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "data": {
-        "colors": ["red", "orange"],
+        "colors": [
+          "red",
+          "orange"
+        ],
         "images": [
           "../images/shop/bike-3.png",
           "../images/shop/bike-3.png",

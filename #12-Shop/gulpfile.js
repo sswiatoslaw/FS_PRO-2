@@ -6,6 +6,8 @@ const browserSync = require('browser-sync').create();
 const fileinclude = require('gulp-file-include');
 const del = require('del');
 
+const ts = require('gulp-typescript');
+
 const build = () => {
     return src([
         'app/js/script.min.js',
@@ -40,6 +42,16 @@ const convertScripts = () => {
         .pipe(browserSync.stream())
 }
 
+const convertTypeScript = () => {
+    return src('app/ts/**/*.ts')
+        .pipe(ts({
+            module: 'system',
+            noImplicitAny: true,
+            outFile: 'output.js'
+        }))
+        .pipe(dest('app/ts'))
+}
+
 const server = () => {
     browserSync.init({
         server: {
@@ -49,12 +61,14 @@ const server = () => {
     watch('app/css/**/*.scss', convertStyles)
     watch(['app/pages/**/*.html', 'app/layout/**/*.html'], convertPages)
     watch(['app/js/**/*.js', '!app/js/script.min.js'], convertScripts)
+    watch(['app/ts/**/*.ts'], convertTypeScript)
     watch(['app/*.html']).on('change', browserSync.reload);
 }
 
 exports.convertStyles = convertStyles;
 exports.convertScripts = convertScripts;
 exports.server = server;
+exports.convertTypeScript = convertTypeScript;
 
 exports.default = series(convertPages, server);
 

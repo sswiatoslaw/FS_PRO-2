@@ -1,7 +1,10 @@
+import { createElement } from "../../modules/elementsModule.js";
+import * as elementsModule from "../../modules/elementsModule.js";
+
 export class Server {
     cart = [];
     constructor() {
-        this.serverUrl = "http://localhost:3000/";
+        this.serverUrl = "http://localhost:4800/";
     }
 
     request = (url) => {
@@ -29,14 +32,13 @@ export class Server {
 
 const server = new Server();
 
-export class Card{
+export class Card {
     constructor(properties) {
         this.name = properties.name;
         this.data = properties.data;
     }
 
     render(currentClass, currentElements) {
-        console.log(currentElements);
         const currentWrapper = document.querySelector(currentClass);
         currentElements.forEach(currentElement => {
             currentWrapper.append(currentElement);
@@ -46,7 +48,6 @@ export class Card{
 
 export class CategoriesCard extends Card {
     constructor(properties) {
-        console.log(properties);
         super(properties);
         this.index = properties.index;
         this.category = properties.category;
@@ -59,14 +60,18 @@ export class CategoriesCard extends Card {
             ]
         )
     }
-
+    
     createTitle() {
-        const currentTitle = document.createElement('h2');
-        currentTitle.classList.add('categories-title');
-        const createTitleSpan = document.createElement('span');
-        createTitleSpan.textContent = this.index;
+        const currentTitle = createElement({
+            tagName: 'h2',
+            classList: ['categories-title'],
+            data: this.name
+        })
+        const createTitleSpan = elementsModule.createElement({
+            tagName: 'span',
+            data: this.index
+        })
         currentTitle.append(createTitleSpan);
-        currentTitle.textContent = this.name;
         return currentTitle
     }
 

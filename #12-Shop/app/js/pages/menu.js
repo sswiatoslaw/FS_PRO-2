@@ -1,4 +1,19 @@
 import { Server } from "./main/classes.js";
+import { previewProductBlock } from '../modules/productModule.js'
+
+
+const checkLocalCart = () => {
+    const localCart = JSON.parse(localStorage.getItem('cart'));
+    if(localCart) {
+        return {
+            availiable: !!localCart,
+            cart: localCart,
+            index: localCart.length
+        }
+    } else {
+        return null
+    }
+}
 
 const server = new Server();
 
@@ -15,24 +30,35 @@ const toggleMenu = () => {
 
 toggleMenu();
 
-const searchItem = (item) => {
-    const searchItemWrapper = document.createElement('a');
-    searchItemWrapper.classList.add("header__search-item");
-    searchItemWrapper.href = `/product.html?id=${item.id}`;
-    const searchItemImage = document.createElement("img");
-    searchItemImage.src = item.data.images[0];
-    searchItemImage.classList.add("header__search-item-image");
-    const searchItemDetails = document.createElement("div");
-    searchItemDetails.classList.add("header__search-details");
-    const searchItemTitle = document.createElement("h3");
-    searchItemTitle.textContent = item.name;
-    const searchItemPrice = document.createElement("p");
-    searchItemPrice.textContent = `${item.price} $`;
-    searchItemDetails.append(searchItemTitle, searchItemPrice);
-    searchItemWrapper.append(searchItemImage, searchItemDetails);
+const cartButtons = document.querySelectorAll('.header__action-cart');
 
-    return searchItemWrapper
-}
+cartButtons.forEach((cartButton) => {
+    cartButton.addEventListener('click', () => {
+        const cartWrapper = document.querySelector('.header__cart-wrapper');
+        const cart = document.querySelector('.header__cart');
+        const localCart = checkLocalCart();
+        if(!localCart) {
+            cartWrapper.classList.add('empty');
+            cartWrapper.textContent = 'Корзина пустая'
+        } else {
+            const cartAmount = document.querySelector('.header__cart-amount');
+            const cartPrice = document.querySelector('.header__cart-price');
+            let totalPrice = 0;
+            localCart.cart.forEach((item) => {
+                totalPrice += +item.price;
+                cartPrice.textContent = `${totalPrice} ₴`;
+                cart.append(previewProductBlock(item));
+            })
+
+            if(localCart.index <= 4) {
+                cartAmount.textContent = `${localCart.index} товара`
+            } else if (localCart.index >= 5) {
+                cartAmount.textContent = `${localCart.index} товаров`
+            }
+        }
+        cartWrapper.classList.toggle('hidden');
+    })
+})
 
 const searchInput = document.querySelector(".header__search");
 
@@ -44,7 +70,7 @@ searchInput.addEventListener('change', (event) => {
         searchInput.classList.add('active');
         server.request(`products?q=${event.target.value}`).then((response) => {
             response.forEach((item) => {
-                searchDropdown.append(searchItem(item));
+                searchDropdown.append(previewProductBlock(item));
             })
         })
     } else {
@@ -58,22 +84,15 @@ const renderCartIndex = () => {
     const cartIndex = document.querySelectorAll('.header__action-cartIndex');
     const cartDetails = checkLocalCart();
     cartIndex.forEach((element) => {
-        if (cartDetails.availiable) {
-            element.textContent = cartDetails.index;
-            element.classList.remove('hidden');
-        } else {
-            element.classList.add('hidden');
+        if(cartDetails) {
+            if (cartDetails.availiable) {
+                element.textContent = cartDetails.index;
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
         }
     })
-}
-
-const checkLocalCart = () => {
-    const localCart = JSON.parse(localStorage.getItem('cart'));
-    return {
-        availiable: !!localCart,
-        cart: localCart,
-        index: localCart.length
-    }
 }
 
 renderCartIndex();

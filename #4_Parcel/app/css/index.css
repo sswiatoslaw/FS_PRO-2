@@ -1,0 +1,11 @@
+@import "reset.css";
+@import "header.css";
+@import "content.css";
+@import "footer.css";
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
