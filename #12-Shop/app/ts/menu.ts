@@ -57,7 +57,7 @@ cartButtons.forEach((cartButton) => {
                 totalPrice += +item.price;
                 if(cartPrice) {
                     cartPrice.textContent = `${totalPrice} ₴`;
-                    cart?.append(previewProductBlock(item));
+                    // cart?.append(previewProductBlock(item));
                 }
             })
 
