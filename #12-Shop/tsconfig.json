@@ -1,0 +1,9 @@
+{
+    "files": ["app/ts/search.ts", "app/ts/menu.ts", "app/ts/cart.ts"],
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "target": "ES2017",
+        "moduleResolution": "classic",
+        "module": "ES6",
+    }
+}

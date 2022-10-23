@@ -8,6 +8,8 @@ const del = require('del');
 
 const ts = require('gulp-typescript');
 
+const tsProject = ts.createProject('tsconfig.json');
+
 const build = () => {
     return src([
         'app/js/script.min.js',
@@ -44,11 +46,7 @@ const convertScripts = () => {
 
 const convertTypeScript = () => {
     return src('app/ts/**/*.ts')
-        .pipe(ts({
-            module: 'system',
-            noImplicitAny: true,
-            outFile: 'output.js'
-        }))
+        .pipe(tsProject())
         .pipe(dest('app/ts'))
 }
 
