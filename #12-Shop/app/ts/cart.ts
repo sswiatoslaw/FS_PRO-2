@@ -35,6 +35,15 @@ cartButtons.forEach((cartButton) => {
         const cartWrapper = document.querySelector('.header__cart-wrapper');
         const cart = document.querySelector('.header__cart');
         const localCart = checkLocalCart();
+        window.addEventListener('click', (event) => {
+            const target: any = event.target;
+            if(target.closest('.header__action-menu')) {
+                cartWrapper?.classList.add('hidden');
+            }
+            if(!target.closest('.header__cart-wrapper') && !target.closest('.header__action-cart')) {
+                cartWrapper?.classList.add('hidden');
+            }
+        })
         if (!localCart) {
             if (cartWrapper) {
                 cartWrapper?.classList.add('empty');

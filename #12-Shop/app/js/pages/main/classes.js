@@ -22,9 +22,9 @@ export class Server {
             headers: {
                 "Content-Type": 'application/json'
             },
-            body: body
+            body: JSON.stringify(body)
         }).then(value => {
-            return value.json();
+            return value;
         })
     }
 }
@@ -318,6 +318,7 @@ export class CurrentProduct extends Card {
         this.description = properties.description1 + properties.description2;
         this.comments = properties.comments;
         this.currentProduct = properties;
+        this.category = properties.category;
 
         this.render('.product__image', [this.renderSwiper()])
         this.render('.product__actions', [
@@ -331,6 +332,9 @@ export class CurrentProduct extends Card {
         this.render('.product__details-wrapper', [
             this.createDetailsDescription(),
             this.createDetailsReviews()
+        ])
+        this.render('.product__other-wrapper', [
+            this.createOtherWrapper()
         ])
         this.renderCartIndex();
     }
@@ -579,6 +583,7 @@ export class CurrentProduct extends Card {
             } else {
                 this.currentProduct.color = this.currentColor;
                 this.currentProduct.base = this.currentBase;
+                this.currentProduct.amount = '1';
                 delete this.currentProduct.data;
                 delete this.currentProduct.comments;
                 this.cart.push(this.currentProduct);
@@ -647,6 +652,69 @@ export class CurrentProduct extends Card {
         reviewsItemWrapper.append(reviewsItemName, reviewsItemText);
 
         return reviewsItemWrapper
+    }
+
+    createOtherItem(item) {
+        const otherWrapper = createElement({
+            tagName: 'a',
+            classList: ['product__other'],
+            attr: {
+                href: `product.html?id=${item.id}`
+            }
+        })
+        const otherImage = createElement({
+            tagName: 'img',
+            classList: ['product__other-image'],
+            attr: {
+                src: item.data.images[0]
+            }
+        })
+        const otherTextWrapper = createElement({
+            tagName: 'div',
+            classList: ['product__other-text']
+        })
+        const otherName = createElement({
+            tagName: 'h2',
+            classList: ['product__other-name'],
+            data: item.name
+        })
+        const otherPrice = createElement({
+            tagName: 'h4',
+            classList: ['product__other-price'],
+            data: `${item.price} $`
+        })
+        const otherColorWrapper = createElement({
+            tagName: 'div',
+            classList: ['product__other-color']
+        })
+
+        item.data.colors.forEach(color => {
+            otherColorWrapper.append(this.createProductColorButton(color))
+        })
+
+        otherTextWrapper.append(otherName, otherPrice);
+        otherWrapper.append(otherImage, otherTextWrapper, otherColorWrapper);
+        return otherWrapper
+    }
+
+    createOtherWrapper() {
+        const productOtherWrapper = createElement({
+            tagName: 'div',
+            classList: ['product__other-list']
+        });
+        const productTitle = document.querySelector('.product__other-title span');
+        productTitle.textContent = this.category.charAt(0).toUpperCase() + this.category.slice(1);
+        
+        server.request(`products?category=${this.category}`).then((products) => {
+            products.filter((product, index) => {
+                if(product.id !== this.id) {
+                    if(index <= 3) {
+                        productOtherWrapper.append(this.createOtherItem(product));
+                    }
+                }
+            })
+        })
+        return productOtherWrapper
     }
 }
 
